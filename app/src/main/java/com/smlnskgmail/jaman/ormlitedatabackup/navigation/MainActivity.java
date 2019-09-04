@@ -1,8 +1,10 @@
-package com.smlnskgmail.jaman.ormlitedatabackup;
+package com.smlnskgmail.jaman.ormlitedatabackup.navigation;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.smlnskgmail.jaman.ormlitedatabackup.R;
 
 public class MainActivity extends AppCompatActivity {
 

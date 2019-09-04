@@ -4,6 +4,7 @@
     package="com.smlnskgmail.jaman.ormlitedatabackup">
 
     <application
+        android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".navigation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
