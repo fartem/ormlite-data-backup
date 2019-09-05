@@ -1,0 +1,20 @@
+# --table-start--
+dataClass=com.smlnskgmail.jaman.ormlitedatabackup.data.Event
+tableName=event
+# --table-fields-start--
+# --field-start--
+fieldName=title
+# --field-end--
+# --field-start--
+fieldName=subtitle
+# --field-end--
+# --field-start--
+fieldName=date
+dataPersister=DATE_STRING
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
