@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">OrmLiteDataBackup</string>
+
+    <!-- default data -->
+    <string name="first_event_title">This is title</string>
+    <string name="first_event_subtitle">This is subtitle</string>
 </resources>

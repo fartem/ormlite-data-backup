@@ -1,5 +1,6 @@
 package com.smlnskgmail.jaman.ormlitedatabackup.db;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 public class HelperFactory {
 
+    @SuppressLint("StaticFieldLeak")
     private static DatabaseHelper databaseHelper;
 
     @Nullable
