@@ -9,6 +9,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.data.DefaultData;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 import java.sql.SQLException;
 
@@ -25,10 +26,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     };
 
     private final Context context;
+    private Log log;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
         this.context = context;
+    }
+
+    void enableLogs(Log log) {
+        this.log = log;
     }
 
     @Override
@@ -37,7 +43,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             createTables(connectionSource);
             new DefaultData(context).create();
         } catch (SQLException e) {
-
+            if (log != null) {
+                log.log(e);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
+import com.smlnskgmail.jaman.ormlitedatabackup.logs.InfoLog;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -28,7 +29,9 @@ public class HelperFactory {
         if (helperFactory != null) {
             releaseHelper();
         }
-        helperFactory = new HelperFactory(OpenHelperManager.getHelper(context, DatabaseHelper.class));
+        DatabaseHelper databaseHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        databaseHelper.enableLogs(new InfoLog());
+        helperFactory = new HelperFactory(databaseHelper);
     }
 
     public static HelperFactory instance() {
