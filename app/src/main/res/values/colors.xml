@@ -14,6 +14,7 @@
 
     <!-- FAB -->
     <color name="colorBackgroundFab">#FFEB3B</color>
+    <color name="colorBackgroundFabCreateEvent">#00e5ff</color>
     <color name="colorBackgroundFabCreateBackup">#00e676</color>
     <color name="colorBackgroundFabRestoreBackup">#ff3d00</color>
     <color name="colorMainFabMenuPressed">#CDFFEE79</color>

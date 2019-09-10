@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.data.event;
+package com.smlnskgmail.jaman.ormlitedatabackup.entities.event;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 

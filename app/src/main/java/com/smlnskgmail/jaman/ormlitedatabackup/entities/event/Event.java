@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.data.event;
+package com.smlnskgmail.jaman.ormlitedatabackup.entities.event;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;

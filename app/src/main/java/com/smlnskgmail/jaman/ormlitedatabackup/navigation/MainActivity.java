@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.Backup;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.EventFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;

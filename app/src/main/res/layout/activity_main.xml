@@ -26,9 +26,17 @@
             fab:fab_moreButtonPlusIcon="@drawable/ic_add">
 
             <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/create_event"
+                style="@style/AppFAB"
+                fab:fab_title="@string/fab_title_create_event"
+                fab:backgroundTint="@color/colorBackgroundFabCreateEvent"
+                fab:srcCompat="@drawable/ic_event_note"
+                fab:fabSize="mini" />
+
+            <jahirfiquitiva.libs.fabsmenu.TitleFAB
                 android:id="@+id/create_local_backup"
                 style="@style/AppFAB"
-                fab:fab_title="Create local backup"
+                fab:fab_title="@string/fab_title_create_local_backup"
                 fab:backgroundTint="@color/colorBackgroundFabCreateBackup"
                 fab:srcCompat="@drawable/ic_restore"
                 fab:fabSize="mini" />
@@ -36,7 +44,7 @@
             <jahirfiquitiva.libs.fabsmenu.TitleFAB
                 android:id="@+id/restore_local_backup"
                 style="@style/AppFAB"
-                fab:fab_title="Restore local backup"
+                fab:fab_title="@string/fab_title_restore_local_backup"
                 fab:backgroundTint="@color/colorBackgroundFabRestoreBackup"
                 fab:srcCompat="@drawable/ic_restore"
                 fab:fabSize="mini" />

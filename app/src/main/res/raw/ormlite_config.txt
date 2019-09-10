@@ -1,5 +1,5 @@
 # --table-start--
-dataClass=com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event
+dataClass=com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event
 tableName=event
 # --table-fields-start--
 # --field-start--

@@ -1,10 +1,10 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.data;
+package com.smlnskgmail.jaman.ormlitedatabackup.entities;
 
 import android.content.Context;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.EventFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
 
 import java.sql.SQLException;
 import java.util.Calendar;

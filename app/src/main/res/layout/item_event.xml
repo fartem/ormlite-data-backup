@@ -29,6 +29,13 @@
             android:textColor="@color/colorSecondaryText"
             tools:text="@string/first_event_subtitle" />
 
+        <TextView
+            android:id="@+id/event_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSecondaryText"
+            tools:text="2019-09-10 21:10" />
+
     </LinearLayout>
 
     <ImageView

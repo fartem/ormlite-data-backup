@@ -7,8 +7,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.DefaultData;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.DefaultData;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 import java.sql.SQLException;

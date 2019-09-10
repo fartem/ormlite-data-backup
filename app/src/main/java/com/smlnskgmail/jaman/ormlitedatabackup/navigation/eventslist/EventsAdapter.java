@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 
 import java.util.List;
 
