@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">OrmLiteDataBackup</string>
 
+    <!-- common -->
+    <string name="common_close">Close</string>
+
     <!-- default data -->
     <string name="first_event_title">This is title</string>
     <string name="first_event_subtitle">This is subtitle</string>
@@ -9,4 +12,9 @@
     <string name="fab_title_create_event">Create event</string>
     <string name="fab_title_create_local_backup">Create local backup</string>
     <string name="fab_title_restore_local_backup">Restore local backup</string>
+
+    <!-- add new event bottom sheet -->
+    <string name="bottom_sheet_new_event_hint_title">Title</string>
+    <string name="bottom_sheet_new_event_hint_subtitle">Subtitle</string>
+    <string name="bottom_sheet_new_event_add">Add event</string>
 </resources>

@@ -1,15 +1,16 @@
 package com.smlnskgmail.jaman.ormlitedatabackup.navigation;
 
-import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.BaseActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.Backup;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventBottomSheet;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;
@@ -17,21 +18,19 @@ import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapt
 import java.sql.SQLException;
 import java.util.List;
 
-import jahirfiquitiva.libs.fabsmenu.TitleFAB;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements NewEventTarget {
 
     private final Log errorLog = new ErrorLog();
 
     private RecyclerView eventsList;
 
-    private TitleFAB createLocalBackup;
-    private TitleFAB restoreLocalBackup;
+    @Override
+    public int layoutResId() {
+        return R.layout.activity_main;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void init() {
         initViews();
         loadEvents();
     }
@@ -39,18 +38,23 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         eventsList = findViewById(R.id.events_list);
 
-        findViewById(R.id.create_local_backup).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Backup(MainActivity.this).createLocalBackup();
-            }
+        setClickToFABTitle(R.id.create_event, view -> {
+            NewEventBottomSheet newEventBottomSheet = new NewEventBottomSheet();
+            newEventBottomSheet.setupNewEventTarget(MainActivity.this);
+            newEventBottomSheet.setupLog(new ErrorLog());
+            newEventBottomSheet.show(getSupportFragmentManager(), newEventBottomSheet.getClass().getName());
         });
-        findViewById(R.id.restore_local_backup).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Backup(MainActivity.this).restoreLocalBackup();
-            }
-        });
+        setClickToFABTitle(R.id.create_local_backup, view -> new Backup(MainActivity.this).createLocalBackup());
+        setClickToFABTitle(R.id.restore_local_backup, view -> new Backup(MainActivity.this).restoreLocalBackup());
+    }
+
+    private void setClickToFABTitle(int resId, View.OnClickListener clickListener) {
+        findViewById(resId).setOnClickListener(clickListener);
+    }
+
+    @Override
+    public void newEventAdded() {
+        loadEvents();
     }
 
     private void loadEvents() {

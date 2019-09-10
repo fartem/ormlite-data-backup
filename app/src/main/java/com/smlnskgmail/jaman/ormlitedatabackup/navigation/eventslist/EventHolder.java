@@ -28,11 +28,8 @@ class EventHolder extends RecyclerView.ViewHolder {
         title.setText(event.title());
         subtitle.setText(event.subtitle());
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        delete.setOnClickListener(view -> {
 
-            }
         });
     }
 

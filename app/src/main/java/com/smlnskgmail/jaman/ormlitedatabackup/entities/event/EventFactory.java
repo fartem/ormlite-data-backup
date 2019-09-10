@@ -11,6 +11,10 @@ public class EventFactory {
         return HelperFactory.instance().allOf(Event.class);
     }
 
+    public static void save(Event event) throws SQLException {
+        HelperFactory.instance().saveAll(Event.class, event);
+    }
+
     public static void saveAll(Event ...events) throws SQLException {
         HelperFactory.instance().saveAll(Event.class, events);
     }

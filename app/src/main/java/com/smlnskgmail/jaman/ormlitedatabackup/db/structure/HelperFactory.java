@@ -2,7 +2,6 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Environment;
 
 import androidx.annotation.NonNull;
 
@@ -53,6 +52,10 @@ public class HelperFactory {
     @SafeVarargs
     public final <T extends EntityWithId> void saveAll(Class<T> clazz, T... entities) throws SQLException {
         databaseHelper.getDao(clazz).create(Arrays.asList(entities));
+    }
+
+    public final <T extends EntityWithId> void save(Class<T> clazz, T entity) throws SQLException {
+        databaseHelper.getDao(clazz).create(entity);
     }
 
     public<T extends EntityWithId> void cleanAll(Class<T> clazz) throws SQLException {
