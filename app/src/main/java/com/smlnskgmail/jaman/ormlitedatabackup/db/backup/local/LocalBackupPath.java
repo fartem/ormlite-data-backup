@@ -4,15 +4,15 @@ import android.os.Environment;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
 
-public class LocalBackupPath {
+class LocalBackupPath {
 
-    private DatabaseParameters databaseParameters;
+    private final DatabaseParameters databaseParameters;
 
-    public LocalBackupPath(DatabaseParameters databaseParameters) {
+    LocalBackupPath(DatabaseParameters databaseParameters) {
         this.databaseParameters = databaseParameters;
     }
 
-    public String pathAsString() {
+    String pathAsString() {
         return Environment.getExternalStorageDirectory() + "/OrmLiteDataBackup/" + databaseParameters.databasePath();
     }
 

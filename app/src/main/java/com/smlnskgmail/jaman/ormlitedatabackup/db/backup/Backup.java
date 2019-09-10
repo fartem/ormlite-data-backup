@@ -7,7 +7,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.RestoreLocalBacku
 
 public class Backup {
 
-    private Context context;
+    private final Context context;
 
     public Backup(Context context) {
         this.context = context;

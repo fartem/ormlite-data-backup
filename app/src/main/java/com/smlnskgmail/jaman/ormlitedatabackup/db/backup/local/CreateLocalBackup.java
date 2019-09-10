@@ -12,7 +12,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 public class CreateLocalBackup extends AsyncTask<Void, Void, Boolean> {
 
     @SuppressLint("StaticFieldLeak")
-    private Context context;
+    private final Context context;
 
     public CreateLocalBackup(Context context) {
         this.context = context;

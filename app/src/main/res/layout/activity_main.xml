@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+    <jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|end"
+        fab:fabs_menu_overlayColor="@color/colorBackgroundFab"
+        fab:fabs_menu_clickableOverlay="true">
+
+        <jahirfiquitiva.libs.fabsmenu.FABsMenu
+            android:id="@+id/main_fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            fab:fab_moreButtonBackgroundColor="@color/colorAccent"
+            fab:fab_moreButtonRippleColor="@color/colorMainFabMenuPressed"
+            fab:fab_moreButtonPlusIcon="@drawable/ic_add">
+
+            <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/create_local_backup"
+                style="@style/AppFAB"
+                fab:fab_title="Create local backup"
+                fab:backgroundTint="@color/colorBackgroundFabCreateBackup"
+                fab:srcCompat="@drawable/ic_restore"
+                fab:fabSize="mini" />
+
+            <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/restore_local_backup"
+                style="@style/AppFAB"
+                fab:fab_title="Restore local backup"
+                fab:backgroundTint="@color/colorBackgroundFabRestoreBackup"
+                fab:srcCompat="@drawable/ic_restore"
+                fab:fabSize="mini" />
+
+        </jahirfiquitiva.libs.fabsmenu.FABsMenu>
+
+    </jahirfiquitiva.libs.fabsmenu.FABsMenuLayout>
+
+</FrameLayout>

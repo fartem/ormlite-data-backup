@@ -4,7 +4,17 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FFEB3B</color>
 
+    <!-- common -->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="ic_launcher_background">#3F51B5</color>
+
     <!-- text -->
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
+
+    <!-- FAB -->
+    <color name="colorBackgroundFab">#FFEB3B</color>
+    <color name="colorBackgroundFabCreateBackup">#00e676</color>
+    <color name="colorBackgroundFabRestoreBackup">#ff3d00</color>
+    <color name="colorMainFabMenuPressed">#CDFFEE79</color>
 </resources>

@@ -8,7 +8,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "0.5.1"
+        versionName "0.5.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,6 +22,9 @@ dependencies {
     // ORMLite
     implementation 'com.j256.ormlite:ormlite-core:5.1'
     implementation 'com.j256.ormlite:ormlite-android:5.1'
+
+    // FAB menu
+    implementation 'me.jahirfiquitiva:FABsMenu:1.1.4'
 
     // Test
     testImplementation 'junit:junit:4.12'

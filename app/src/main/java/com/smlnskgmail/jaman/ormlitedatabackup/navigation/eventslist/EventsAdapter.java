@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventHolder> {
 
-    private List<Event> events;
+    private final List<Event> events;
 
     public EventsAdapter(List<Event> events) {
         this.events = events;

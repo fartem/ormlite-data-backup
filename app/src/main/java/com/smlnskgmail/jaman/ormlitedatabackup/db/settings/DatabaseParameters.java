@@ -4,8 +4,8 @@ import android.content.Context;
 
 public class DatabaseParameters {
 
-    private Context context;
-    private String databaseName;
+    private final Context context;
+    private final String databaseName;
 
     public DatabaseParameters(Context context, String databaseName) {
         this.context = context;
