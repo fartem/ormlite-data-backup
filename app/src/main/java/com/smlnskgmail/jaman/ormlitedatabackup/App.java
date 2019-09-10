@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup;
 
 import android.app.Application;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 
 public class App extends Application {
 

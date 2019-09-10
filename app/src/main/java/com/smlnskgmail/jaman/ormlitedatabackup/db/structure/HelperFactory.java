@@ -1,25 +1,28 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Environment;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.InfoLog;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
+import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressLint("StaticFieldLeak")
 public class HelperFactory {
 
     private static HelperFactory helperFactory;
 
-    @SuppressLint("StaticFieldLeak")
     private final DatabaseHelper databaseHelper;
+
+    private DatabaseParameters databaseParameters;
 
     private HelperFactory(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
@@ -30,7 +33,7 @@ public class HelperFactory {
             releaseHelper();
         }
         DatabaseHelper databaseHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        databaseHelper.enableLogs(new InfoLog());
+        databaseHelper.enableLogs(new ErrorLog());
         helperFactory = new HelperFactory(databaseHelper);
     }
 
@@ -54,6 +57,18 @@ public class HelperFactory {
 
     public<T extends EntityWithId> void cleanAll(Class<T> clazz) throws SQLException {
         databaseHelper.getDao(clazz).deleteBuilder().delete();
+    }
+
+    public void execSQL(String sql) {
+        databaseHelper.getWritableDatabase().execSQL(sql);
+    }
+
+    public DatabaseParameters databaseSettings() {
+        if (databaseParameters == null) {
+            String databaseName = databaseHelper.databaseName();
+            databaseParameters = new DatabaseParameters(databaseHelper.context(), databaseName);
+        }
+        return databaseParameters;
     }
 
 }

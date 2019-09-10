@@ -5,9 +5,9 @@ import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.BaseDBTest;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.EventFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.BaseDBTest;
 
 import org.junit.Test;
 

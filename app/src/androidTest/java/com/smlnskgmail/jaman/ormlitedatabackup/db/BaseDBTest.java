@@ -1,6 +1,7 @@
 package com.smlnskgmail.jaman.ormlitedatabackup.db;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.db.data.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 
 import org.junit.Before;
 

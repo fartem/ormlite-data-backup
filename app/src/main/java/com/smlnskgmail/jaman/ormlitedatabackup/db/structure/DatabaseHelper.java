@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -58,5 +58,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion,
                           int newVersion) {}
+
+    String databaseName() {
+        return DATABASE_NAME;
+    }
+
+    Context context() {
+        return context;
+    }
 
 }
