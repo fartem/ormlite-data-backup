@@ -19,4 +19,8 @@ public class EventFactory {
         HelperFactory.instance().saveAll(Event.class, events);
     }
 
+    public static void delete(Event event) throws SQLException {
+        HelperFactory.instance().delete(Event.class, event);
+    }
+
 }

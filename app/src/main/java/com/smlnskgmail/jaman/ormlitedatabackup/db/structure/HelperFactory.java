@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteException;
 import androidx.annotation.NonNull;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
@@ -60,6 +59,10 @@ public class HelperFactory {
         databaseHelper.getDao(clazz).create(entity);
     }
 
+    public final <T extends EntityWithId> void delete(Class<T> clazz, T entity) throws SQLException {
+        databaseHelper.getDao(clazz).delete(entity);
+    }
+
     public<T extends EntityWithId> void cleanAll(Class<T> clazz) throws SQLException {
         databaseHelper.getDao(clazz).deleteBuilder().delete();
     }
@@ -68,16 +71,12 @@ public class HelperFactory {
         databaseHelper.getWritableDatabase().execSQL(sql);
     }
 
-    public DatabaseParameters databaseSettings() {
+    public DatabaseParameters databaseParameters() {
         if (databaseParameters == null) {
             String databaseName = databaseHelper.databaseName();
             databaseParameters = new DatabaseParameters(databaseHelper.context(), databaseName);
         }
         return databaseParameters;
-    }
-
-    public<T> Dao daoOf(Class<T> clazz) throws SQLException {
-        return databaseHelper.getDao(clazz);
     }
 
 }

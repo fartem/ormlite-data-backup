@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventHolder> {
     @Override
     public void onBindViewHolder(@NonNull EventHolder holder, int position) {
         holder.bind(events.get(position));
+        holder.withLog(new ErrorLog());
     }
 
     @Override

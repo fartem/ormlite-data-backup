@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import androidx.core.content.ContextCompat;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackup;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class CreateLocalBackupTest {
     }
 
     private File localBackupFile() {
-        LocalBackupPath localBackupPath = new LocalBackupPath(HelperFactory.instance().databaseSettings());
+        LocalBackupPath localBackupPath = new LocalBackupPath(HelperFactory.instance().databaseParameters());
         return new File(localBackupPath.pathAsString());
     }
 

@@ -2,10 +2,13 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.backup;
 
 import android.content.Context;
 
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackup;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackup;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackupTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 
 public class Backup {
@@ -29,7 +32,10 @@ public class Backup {
     }
 
     public void restoreLocalBackup() {
-        new RestoreLocalBackup().execute();
+        DatabaseParameters databaseParameters = HelperFactory.instance().databaseParameters();
+        String backupPath = new LocalBackupPath(databaseParameters).pathAsString();
+
+        new RestoreLocalBackup(context, restoreLocalBackupTarget, backupPath, new ErrorLog()).execute();
     }
 
 }

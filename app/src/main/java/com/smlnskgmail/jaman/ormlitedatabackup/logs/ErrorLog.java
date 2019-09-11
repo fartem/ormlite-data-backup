@@ -7,4 +7,9 @@ public class ErrorLog implements Log {
         android.util.Log.e(getClass().getCanonicalName(), "->", e);
     }
 
+    @Override
+    public void message(String message) {
+        android.util.Log.e(getClass().getCanonicalName(), message);
+    }
+
 }

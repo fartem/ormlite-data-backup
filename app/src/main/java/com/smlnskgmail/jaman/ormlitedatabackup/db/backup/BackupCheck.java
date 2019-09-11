@@ -6,14 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.DatabaseHelper;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 public class BackupCheck {
 
-    private Context context;
-    private String databaseName;
-    private Log log;
+    private final Context context;
+    private final String databaseName;
+    private final Log log;
 
     public BackupCheck(Context context, String databaseName, Log log) {
         this.context = context;
@@ -22,16 +21,13 @@ public class BackupCheck {
     }
 
     public boolean isValidDB() {
-        SQLiteDatabase sqLiteDatabase = null;
-        OrmLiteSqliteOpenHelper openHelper = null;;
-
-        try {
-            sqLiteDatabase = SQLiteDatabase.openDatabase(databaseName, null, SQLiteDatabase.OPEN_READONLY);
-            openHelper = new DatabaseHelper(context, databaseName);
-            // Needed to checking the file extension and access
+        try (SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openDatabase(databaseName, null, SQLiteDatabase.OPEN_READONLY);
+             OrmLiteSqliteOpenHelper openHelper = new DatabaseHelper(context, databaseName)) {
             int version = sqLiteDatabase.getVersion();
-            for (Class clazz: DatabaseHelper.DB_CLASSED) {
-                Dao dao = HelperFactory.instance().daoOf(clazz); // Keep
+            log.message("DB version: " + version);
+            for (Class clazz : DatabaseHelper.DB_CLASSED) {
+                Dao dao = openHelper.getDao(clazz);
+                log.message("Table: " + dao.getTableName());
             }
             return true;
         } catch (Exception e) {
@@ -39,9 +35,6 @@ public class BackupCheck {
                 log.log(e);
             }
             return false;
-        } finally {
-            sqLiteDatabase.close();
-            openHelper.close();
         }
     }
 
