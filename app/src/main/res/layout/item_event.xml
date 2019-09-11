@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -42,7 +44,6 @@
         android:id="@+id/event_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foreground="?selectableItemBackground"
         android:layout_gravity="center"
         android:src="@drawable/ic_delete" />
 

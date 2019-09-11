@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorAccent">#FFE719</color>
 
     <!-- common -->
     <color name="colorWhite">#FFFFFF</color>
@@ -13,7 +13,7 @@
     <color name="colorSecondaryText">#757575</color>
 
     <!-- FAB -->
-    <color name="colorBackgroundFab">#FFEB3B</color>
+    <color name="colorBackgroundFab">#7A757575</color>
     <color name="colorBackgroundFabCreateEvent">#00e5ff</color>
     <color name="colorBackgroundFabCreateBackup">#00e676</color>
     <color name="colorBackgroundFabRestoreBackup">#ff3d00</color>

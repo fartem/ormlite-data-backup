@@ -11,6 +11,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.local.create.CreateLocalBackupTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;
@@ -18,7 +19,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapt
 import java.sql.SQLException;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements NewEventTarget {
+public class MainActivity extends BaseActivity implements NewEventTarget, CreateLocalBackupTarget {
 
     private final Log errorLog = new ErrorLog();
 
@@ -44,8 +45,12 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
             newEventBottomSheet.setupLog(new ErrorLog());
             newEventBottomSheet.show(getSupportFragmentManager(), newEventBottomSheet.getClass().getName());
         });
-        setClickToFABTitle(R.id.create_local_backup, view -> new Backup(MainActivity.this).createLocalBackup());
-        setClickToFABTitle(R.id.restore_local_backup, view -> new Backup(MainActivity.this).restoreLocalBackup());
+        setClickToFABTitle(R.id.create_local_backup, view -> {
+            new Backup(MainActivity.this, MainActivity.this).createLocalBackup();
+        });
+        setClickToFABTitle(R.id.restore_local_backup, view -> {
+            new Backup(MainActivity.this, MainActivity.this).restoreLocalBackup();
+        });
     }
 
     private void setClickToFABTitle(int resId, View.OnClickListener clickListener) {
@@ -64,6 +69,11 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
         } catch (SQLException e) {
             errorLog.log(e);
         }
+    }
+
+    @Override
+    public void localBackupCreated(boolean result) {
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.sqlite.SQLiteException;
 
 import androidx.annotation.NonNull;
 
@@ -62,7 +63,7 @@ public class HelperFactory {
         databaseHelper.getDao(clazz).deleteBuilder().delete();
     }
 
-    public void execSQL(String sql) {
+    public void execSQL(String sql) throws SQLiteException {
         databaseHelper.getWritableDatabase().execSQL(sql);
     }
 

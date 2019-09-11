@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/events_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        fab:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                 style="@style/AppFAB"
                 fab:fab_title="@string/fab_title_create_local_backup"
                 fab:backgroundTint="@color/colorBackgroundFabCreateBackup"
-                fab:srcCompat="@drawable/ic_restore"
+                fab:srcCompat="@drawable/ic_save"
                 fab:fabSize="mini" />
 
             <jahirfiquitiva.libs.fabsmenu.TitleFAB
