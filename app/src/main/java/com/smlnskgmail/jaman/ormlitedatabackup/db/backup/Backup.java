@@ -2,10 +2,10 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.backup;
 
 import android.content.Context;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.local.create.CreateLocalBackup;
-import com.smlnskgmail.jaman.ormlitedatabackup.local.create.CreateLocalBackupTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.local.restore.RestoreLocalBackup;
-import com.smlnskgmail.jaman.ormlitedatabackup.local.restore.RestoreLocalBackupTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackup;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackup;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackupTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 
 public class Backup {

@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.local.restore;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore;
 
 public interface RestoreLocalBackupTarget {
 

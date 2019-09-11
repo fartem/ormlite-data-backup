@@ -11,7 +11,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.newevent.NewEventTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.local.create.CreateLocalBackupTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;

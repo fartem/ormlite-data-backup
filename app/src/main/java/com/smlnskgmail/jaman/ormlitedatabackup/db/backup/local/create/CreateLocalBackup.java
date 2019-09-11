@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.local.create;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools.FileCopy;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.local.LocalBackupPath;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 

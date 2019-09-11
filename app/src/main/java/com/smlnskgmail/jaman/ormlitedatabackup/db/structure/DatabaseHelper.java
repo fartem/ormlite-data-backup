@@ -21,7 +21,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final int DATABASE_VERSION = DATABASE_VERSION_1;
 
-    private static final Class[] DB_CLASSED = new Class[]{
+    public static final Class[] DB_CLASSED = new Class[]{
             Event.class
     };
 
@@ -30,6 +30,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
+        this.context = context;
+    }
+
+    public DatabaseHelper(Context context, String databaseName) {
+        super(context, databaseName, null, DATABASE_VERSION, R.raw.ormlite_config);
         this.context = context;
     }
 

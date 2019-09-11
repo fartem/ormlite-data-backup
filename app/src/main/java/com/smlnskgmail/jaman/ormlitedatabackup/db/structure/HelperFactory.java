@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import androidx.annotation.NonNull;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
@@ -73,6 +74,10 @@ public class HelperFactory {
             databaseParameters = new DatabaseParameters(databaseHelper.context(), databaseName);
         }
         return databaseParameters;
+    }
+
+    public<T> Dao daoOf(Class<T> clazz) throws SQLException {
+        return databaseHelper.getDao(clazz);
     }
 
 }

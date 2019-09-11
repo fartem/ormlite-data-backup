@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.local.create;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create;
 
 public interface CreateLocalBackupTarget {
 
