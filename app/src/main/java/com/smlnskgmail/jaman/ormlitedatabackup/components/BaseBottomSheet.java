@@ -18,7 +18,7 @@ public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
         init(view);
     }
 
-    public abstract void init(View view);
+    protected abstract void init(View view);
 
     @Nullable
     @Override
@@ -27,6 +27,6 @@ public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
         return inflater.inflate(layoutResId(), container, false);
     }
 
-    public abstract int layoutResId();
+    protected abstract int layoutResId();
 
 }

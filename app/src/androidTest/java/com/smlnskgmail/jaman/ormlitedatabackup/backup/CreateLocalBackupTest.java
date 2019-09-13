@@ -43,9 +43,8 @@ public class CreateLocalBackupTest {
 
     @Test
     public void createLocalBackup() throws InterruptedException {
-        CreateLocalBackup createLocalBackup = new CreateLocalBackup(context, result -> {
-            countDownLatch.countDown();
-        }, null);
+        CreateLocalBackup createLocalBackup = new CreateLocalBackup(context, result ->
+                countDownLatch.countDown(), null);
         createLocalBackup.execute();
         countDownLatch.await();
 
