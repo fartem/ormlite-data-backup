@@ -11,18 +11,18 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 public class BackupCheck {
 
     private final Context context;
-    private final String databaseName;
+    private final String databasePath;
     private final Log log;
 
-    public BackupCheck(Context context, String databaseName, Log log) {
+    public BackupCheck(Context context, String databasePath, Log log) {
         this.context = context;
-        this.databaseName = databaseName;
+        this.databasePath = databasePath;
         this.log = log;
     }
 
     public boolean isValidDB() {
-        try (SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openDatabase(databaseName, null, SQLiteDatabase.OPEN_READONLY);
-             OrmLiteSqliteOpenHelper openHelper = new DatabaseHelper(context, databaseName)) {
+        try (SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath, null, SQLiteDatabase.OPEN_READONLY);
+             OrmLiteSqliteOpenHelper openHelper = new DatabaseHelper(context, databasePath)) {
             int version = sqLiteDatabase.getVersion();
             log.message("DB version: " + version);
             for (Class clazz : DatabaseHelper.DB_CLASSED) {

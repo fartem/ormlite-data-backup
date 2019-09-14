@@ -11,4 +11,6 @@ public abstract class EntityWithId {
         this.id = id;
     }
 
+    public EntityWithId() {}
+
 }

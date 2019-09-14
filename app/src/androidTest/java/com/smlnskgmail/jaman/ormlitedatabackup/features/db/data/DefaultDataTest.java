@@ -1,14 +1,14 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.data;
+package com.smlnskgmail.jaman.ormlitedatabackup.features.db.data;
 
 import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.BaseDBTest;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.DefaultData;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.features.db.BaseDBTest;
 
 import org.junit.Test;
 

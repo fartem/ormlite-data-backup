@@ -1,7 +1,7 @@
 package com.smlnskgmail.jaman.ormlitedatabackup;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.backup.CreateLocalBackupTest;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.data.DefaultDataTest;
+import com.smlnskgmail.jaman.ormlitedatabackup.features.backup.CreateLocalBackupTest;
+import com.smlnskgmail.jaman.ormlitedatabackup.features.db.data.DefaultDataTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

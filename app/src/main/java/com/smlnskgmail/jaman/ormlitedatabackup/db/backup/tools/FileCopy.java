@@ -15,7 +15,8 @@ public class FileCopy {
 
     private final Context context;
 
-    private final String from;
+    private String from;
+    private InputStream fromAsStream;
     private final String to;
 
     private final Log log;
@@ -27,12 +28,20 @@ public class FileCopy {
         this.log = log;
     }
 
+    public FileCopy(Context context, InputStream fromAsStream, String to, Log log) {
+        this.context = context;
+        this.fromAsStream = fromAsStream;
+        this.to = to;
+        this.log = log;
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean copy() {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
-            inputStream = context.getContentResolver().openInputStream(Uri.fromFile(new File(from)));
+            inputStream = fromAsStream != null ? fromAsStream
+                    :context.getContentResolver().openInputStream(Uri.fromFile(new File(from)));
             File toFile = new File(to);
             if (toFile.exists()) {
                 toFile.delete();
