@@ -12,7 +12,7 @@ public class EventFactory {
     }
 
     public static void save(Event event) throws SQLException {
-        HelperFactory.instance().saveAll(Event.class, event);
+        HelperFactory.instance().save(Event.class, event);
     }
 
     public static void saveAll(Event ...events) throws SQLException {
@@ -21,6 +21,10 @@ public class EventFactory {
 
     public static void delete(Event event) throws SQLException {
         HelperFactory.instance().delete(Event.class, event);
+    }
+
+    public static long sizeOf() throws SQLException {
+        return HelperFactory.instance().sizeOf(Event.class);
     }
 
 }

@@ -53,6 +53,7 @@ public class NewEventBottomSheet extends BaseBottomSheet {
                     log.log(e);
                 }
             }
+            dismiss();
         });
     }
 

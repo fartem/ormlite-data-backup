@@ -14,7 +14,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 import java.sql.SQLException;
 
-class EventHolder extends RecyclerView.ViewHolder {
+public class EventHolder extends RecyclerView.ViewHolder {
 
     private final TextView title;
     private final TextView subtitle;

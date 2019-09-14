@@ -50,6 +50,10 @@ public class HelperFactory {
         return databaseHelper.getDao(clazz).queryForAll();
     }
 
+    public<T extends EntityWithId> long sizeOf(Class<T> clazz) throws SQLException {
+        return databaseHelper.getDao(clazz).countOf();
+    }
+
     @SafeVarargs
     public final <T extends EntityWithId> void saveAll(Class<T> clazz, T... entities) throws SQLException {
         databaseHelper.getDao(clazz).create(Arrays.asList(entities));
