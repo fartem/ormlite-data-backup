@@ -4,6 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 
 public abstract class EntityWithId {
 
+    @SuppressWarnings("FieldCanBeLocal")
     @DatabaseField(generatedId = true)
     private long id;
 
@@ -11,6 +12,7 @@ public abstract class EntityWithId {
         this.id = id;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public EntityWithId() {}
 
 }

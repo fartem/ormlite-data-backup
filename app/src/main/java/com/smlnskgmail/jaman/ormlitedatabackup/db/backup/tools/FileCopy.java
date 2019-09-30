@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 public class FileCopy {
 
@@ -41,7 +42,7 @@ public class FileCopy {
         OutputStream outputStream = null;
         try {
             inputStream = fromAsStream != null ? fromAsStream
-                    :context.getContentResolver().openInputStream(Uri.fromFile(new File(from)));
+                    : context.getContentResolver().openInputStream(Uri.fromFile(new File(from)));
             File toFile = new File(to);
             if (toFile.exists()) {
                 toFile.delete();
@@ -55,7 +56,7 @@ public class FileCopy {
 
             byte[] buffer = new byte[1024];
             int length;
-            while ((length = inputStream.read(buffer)) > 0) {
+            while ((length = Objects.requireNonNull(inputStream).read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
 
@@ -66,8 +67,8 @@ public class FileCopy {
             return false;
         } finally {
             try {
-                inputStream.close();
-                outputStream.close();
+                Objects.requireNonNull(inputStream).close();
+                Objects.requireNonNull(outputStream).close();
             } catch (IOException e) {
                 log.log(e);
             }

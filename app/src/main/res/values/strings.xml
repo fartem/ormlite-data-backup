@@ -17,4 +17,9 @@
     <string name="bottom_sheet_new_event_hint_title">Title</string>
     <string name="bottom_sheet_new_event_hint_subtitle">Subtitle</string>
     <string name="bottom_sheet_new_event_add">Add event</string>
+
+    <!-- request in MainActivity -->
+    <string name="request_storage_permission_status_granted">Permission granted!</string>
+    <string name="request_storage_permission_status_denied">Permission denied! Try again!</string>
+    <string name="request_storage_permission_status_blocked">Permission blocked! Allow access to the storage in the Device Settings!</string>
 </resources>

@@ -54,6 +54,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void createTables(ConnectionSource connectionSource) throws SQLException {
         for (Class clazz: DB_CLASSED) {
             TableUtils.createTable(connectionSource, clazz);

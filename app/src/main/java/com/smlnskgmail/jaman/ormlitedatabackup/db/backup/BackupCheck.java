@@ -20,6 +20,7 @@ public class BackupCheck {
         this.log = log;
     }
 
+    @SuppressWarnings("unchecked")
     public boolean isValidDB() {
         try (SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath, null, SQLiteDatabase.OPEN_READONLY);
              OrmLiteSqliteOpenHelper openHelper = new DatabaseHelper(context, databasePath)) {
