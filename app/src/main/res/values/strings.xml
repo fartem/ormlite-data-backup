@@ -22,4 +22,10 @@
     <string name="request_storage_permission_status_granted">Permission granted!</string>
     <string name="request_storage_permission_status_denied">Permission denied! Try again!</string>
     <string name="request_storage_permission_status_blocked">Permission blocked! Allow access to the storage in the Device Settings!</string>
+
+    <!-- callbacks in MainActivity -->
+    <string name="callback_backup_create_success">Backup created!</string>
+    <string name="callback_backup_create_error">Failed create backup! See more in logs!</string>
+    <string name="callback_backup_restore_success">Backup restored!</string>
+    <string name="callback_backup_restore_error">Failed restore backup! See more in logs!</string>
 </resources>

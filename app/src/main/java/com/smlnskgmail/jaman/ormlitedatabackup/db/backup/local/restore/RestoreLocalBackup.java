@@ -28,6 +28,7 @@ public class RestoreLocalBackup extends AsyncTask<Void, Void, Boolean> {
         this.log = log;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     protected Boolean doInBackground(Void... voids) {
         DatabaseParameters databaseParameters = HelperFactory.instance().databaseParameters();
@@ -39,7 +40,9 @@ public class RestoreLocalBackup extends AsyncTask<Void, Void, Boolean> {
             if (isValidDB) {
                 if (context.deleteDatabase(databaseParameters.databaseName())) {
                     File originalDatabase = new File(databasePath);
-                    return new File(databasePath).renameTo(originalDatabase);
+                    // https://stackoverflow.com/questions/14651567/java-file-renameto-does-rename-file-but-returns-false-why
+                    new File(databasePath).renameTo(originalDatabase);
+                    return true;
                 } else {
                     return false;
                 }

@@ -65,8 +65,8 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new Backup(MainActivity.this, (CreateLocalBackupTarget) result -> {
-
+                new Backup(MainActivity.this, (CreateLocalBackupTarget) success -> {
+                    showLongSnackbar(success ? R.string.callback_backup_create_success : R.string.callback_backup_create_error);
                 }).createLocalBackup();
             }
         });
@@ -75,8 +75,9 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new Backup(MainActivity.this, (RestoreLocalBackupTarget) result -> {
-
+                new Backup(MainActivity.this, (RestoreLocalBackupTarget) success -> {
+                    showLongSnackbar(success ? R.string.callback_backup_restore_success : R.string.callback_backup_restore_error);
+                    // TODO: restart app
                 }).restoreLocalBackup();
             }
         });
@@ -116,8 +117,12 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
                     snackbarMessageResId = R.string.request_storage_permission_status_blocked;
                 }
             }
-            new LongSnackbar(findViewById(android.R.id.content), getString(snackbarMessageResId)).show();
+            showLongSnackbar(snackbarMessageResId);
         }
+    }
+
+    private void showLongSnackbar(int messageResId) {
+        new LongSnackbar(findViewById(android.R.id.content), getString(messageResId)).show();
     }
 
     @Override
