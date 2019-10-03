@@ -66,7 +66,8 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
                 requestStoragePermission();
             } else {
                 new Backup(MainActivity.this, (CreateLocalBackupTarget) success -> {
-                    showLongSnackbar(success ? R.string.callback_backup_create_success : R.string.callback_backup_create_error);
+                    int messageResId = success ? R.string.callback_backup_create_success : R.string.callback_backup_create_error;
+                    showLongSnackbar(messageResId);
                 }).createLocalBackup();
             }
         });
@@ -76,7 +77,8 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
                 requestStoragePermission();
             } else {
                 new Backup(MainActivity.this, (RestoreLocalBackupTarget) success -> {
-                    showLongSnackbar(success ? R.string.callback_backup_restore_success : R.string.callback_backup_restore_error);
+                    int messageResId = success ? R.string.callback_backup_restore_success : R.string.callback_backup_restore_error;
+                    showLongSnackbar(messageResId);
                     // TODO: restart app
                 }).restoreLocalBackup();
             }

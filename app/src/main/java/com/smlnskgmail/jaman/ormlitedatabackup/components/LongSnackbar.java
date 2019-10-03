@@ -6,8 +6,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class LongSnackbar {
 
-    private View view;
-    private String text;
+    private final View view;
+    private final String text;
 
     public LongSnackbar(View view, String text) {
         this.view = view;

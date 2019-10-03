@@ -30,8 +30,8 @@ public class CreateEventTest extends BaseDBTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    private String eventTitle = "Test event's title";
-    private String eventSubtitle = "Test event's subtitle";
+    private final String eventTitle = "Test event's title";
+    private final String eventSubtitle = "Test event's subtitle";
 
     private long eventsAtStart = 0;
 

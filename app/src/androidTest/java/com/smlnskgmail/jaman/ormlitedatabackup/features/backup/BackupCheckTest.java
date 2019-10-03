@@ -19,8 +19,8 @@ import static org.junit.Assert.assertFalse;
 
 public class BackupCheckTest {
 
-    private Context context = InstrumentationRegistry.getInstrumentation().getContext();
-    private Context targetContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+    private final Context context = InstrumentationRegistry.getInstrumentation().getContext();
+    private final Context targetContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
     private DatabaseParameters databaseParameters;
 
