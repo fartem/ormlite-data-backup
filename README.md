@@ -7,12 +7,21 @@ Demo app for demonstration a way of backup user data.
 - create local (on device) backup;
 - restore local backup.
 
-## 2. Screenshots
+## 2. Tests
 
-## 3. Tests
+| Class | Description | Status |
+| --- | --- | --- |
+| BackupCheckTest | Backup functionality test | - |
+| CreateLocalBackupTest | Local backup creation test | - |
+| CreateEventTest | Create event test | - |
 
-## 4. Notes
 
-## 5. About
+## 3. Screenshots
 
-In development.
+<p align="center">
+  <img src="media/screenshot_01.png" width="200" />
+  <img src="media/screenshot_02.png" width="200" />
+  <img src="media/screenshot_03.png" width="200" />
+  <img src="media/screenshot_04.png" width="200" />
+  <img src="media/screenshot_05.png" width="200" />
+</p>
