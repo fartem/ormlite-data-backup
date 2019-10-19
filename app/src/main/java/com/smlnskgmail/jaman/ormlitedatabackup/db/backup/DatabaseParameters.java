@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.settings;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup;
 
 import android.content.Context;
 

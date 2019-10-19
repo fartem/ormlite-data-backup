@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
+package com.smlnskgmail.jaman.ormlitedatabackup.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

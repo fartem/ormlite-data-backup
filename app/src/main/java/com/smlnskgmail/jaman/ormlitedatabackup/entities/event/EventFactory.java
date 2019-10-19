@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.ormlitedatabackup.entities.event;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 
 import java.sql.SQLException;
 import java.util.List;

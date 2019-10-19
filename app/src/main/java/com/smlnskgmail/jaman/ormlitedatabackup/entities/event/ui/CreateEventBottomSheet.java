@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.entities.event.components.newevent;
+package com.smlnskgmail.jaman.ormlitedatabackup.entities.event.ui;
 
 import android.view.View;
 import android.widget.EditText;
@@ -7,24 +7,16 @@ import android.widget.TextView;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.BaseBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class NewEventBottomSheet extends BaseBottomSheet {
+public class CreateEventBottomSheet extends BaseBottomSheet {
 
-    private NewEventTarget newEventTarget;
-    private Log log;
+    private EventCreateTarget eventCreateTarget;
 
-    public void setupNewEventTarget(NewEventTarget newEventTarget) {
-        this.newEventTarget = newEventTarget;
-    }
-
-    public void setupLog(Log log) {
-        this.log = log;
+    public void setupCreateEventTarget(EventCreateTarget eventCreateTarget) {
+        this.eventCreateTarget = eventCreateTarget;
     }
 
     @Override
@@ -44,22 +36,15 @@ public class NewEventBottomSheet extends BaseBottomSheet {
         view.findViewById(R.id.add_new_event).setOnClickListener(button -> {
             String newEventTitle = title.getText().toString();
             String newEventSubtitle = subtitle.getText().toString();
-            Event event = new Event(newEventTitle, newEventSubtitle, calendar.getTime());
-            try {
-                EventFactory.save(event);
-                newEventTarget.newEventAdded();
-            } catch (SQLException e) {
-                if (log != null) {
-                    log.log(e);
-                }
-            }
+
+            eventCreateTarget.eventAdded(new Event(newEventTitle, newEventSubtitle, calendar.getTime()));
             dismiss();
         });
     }
 
     @Override
     public int layoutResId() {
-        return R.layout.bottom_sheet_new_event;
+        return R.layout.bottom_sheet_create_event;
     }
 
 }

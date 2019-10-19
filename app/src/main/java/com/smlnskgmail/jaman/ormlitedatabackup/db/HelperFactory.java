@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.structure;
+package com.smlnskgmail.jaman.ormlitedatabackup.db;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteException;
 import androidx.annotation.NonNull;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 
 import java.sql.SQLException;

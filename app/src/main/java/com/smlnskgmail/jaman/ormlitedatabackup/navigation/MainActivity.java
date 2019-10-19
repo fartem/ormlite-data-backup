@@ -18,21 +18,25 @@ import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLoca
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackupTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.components.newevent.NewEventBottomSheet;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.components.newevent.NewEventTarget;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.ui.CreateEventBottomSheet;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.ui.EventCreateTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
+import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventDeleteTarget;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import jahirfiquitiva.libs.fabsmenu.FABsMenu;
 
-public class MainActivity extends BaseActivity implements NewEventTarget {
+public class MainActivity extends BaseActivity implements EventCreateTarget, EventDeleteTarget {
 
     private static final int REQUEST_CODE_STORAGE = 101;
 
+    private final List<Event> events = new ArrayList<>();
     private final Log errorLog = new ErrorLog();
 
     private RecyclerView eventsList;
@@ -55,10 +59,9 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
 
         setClickToFABTitle(R.id.create_event, view -> {
             hideFab();
-            NewEventBottomSheet newEventBottomSheet = new NewEventBottomSheet();
-            newEventBottomSheet.setupNewEventTarget(MainActivity.this);
-            newEventBottomSheet.setupLog(new ErrorLog());
-            newEventBottomSheet.show(getSupportFragmentManager(), newEventBottomSheet.getClass().getName());
+            CreateEventBottomSheet createEventBottomSheet = new CreateEventBottomSheet();
+            createEventBottomSheet.setupCreateEventTarget(MainActivity.this);
+            createEventBottomSheet.show(getSupportFragmentManager(), createEventBottomSheet.getClass().getName());
         });
         setClickToFABTitle(R.id.create_local_backup, view -> {
             hideFab();
@@ -128,14 +131,35 @@ public class MainActivity extends BaseActivity implements NewEventTarget {
     }
 
     @Override
-    public void newEventAdded() {
-        loadEvents();
+    public void eventAdded(@NonNull Event event) {
+        try {
+            EventFactory.save(event);
+            events.add(event);
+
+            Objects.requireNonNull(eventsList.getAdapter()).notifyItemInserted(events.size() - 1);
+        } catch (SQLException e) {
+            errorLog.log(e);
+        }
     }
 
     private void loadEvents() {
         try {
-            List<Event> events = EventFactory.allEvents();
-            eventsList.setAdapter(new EventsAdapter(events));
+            events.addAll(EventFactory.allEvents());
+            eventsList.setAdapter(new EventsAdapter(events, this));
+        } catch (SQLException e) {
+            errorLog.log(e);
+        }
+    }
+
+    @Override
+    public void eventDeleted(@NonNull Event event) {
+        try {
+            EventFactory.delete(event);
+
+            int indexOfEvent = events.indexOf(event);
+            events.remove(event);
+
+            Objects.requireNonNull(eventsList.getAdapter()).notifyItemRemoved(indexOfEvent);
         } catch (SQLException e) {
             errorLog.log(e);
         }

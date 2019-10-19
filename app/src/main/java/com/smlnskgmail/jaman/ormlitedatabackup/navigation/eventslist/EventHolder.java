@@ -9,29 +9,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
-import java.sql.SQLException;
-
-public class EventHolder extends RecyclerView.ViewHolder {
+class EventHolder extends RecyclerView.ViewHolder {
 
     private final TextView title;
     private final TextView subtitle;
 
     private final ImageView delete;
 
-    private Log log;
+    private final EventDeleteTarget eventDeleteTarget;
 
-    EventHolder(@NonNull View itemView) {
+    EventHolder(@NonNull View itemView, @NonNull EventDeleteTarget eventDeleteTarget) {
         super(itemView);
         title = itemView.findViewById(R.id.event_title);
         subtitle = itemView.findViewById(R.id.event_subtitle);
         delete = itemView.findViewById(R.id.event_delete);
-    }
 
-    void withLog(Log log) {
-        this.log = log;
+        this.eventDeleteTarget = eventDeleteTarget;
     }
 
     void bind(Event event) {
@@ -39,13 +33,7 @@ public class EventHolder extends RecyclerView.ViewHolder {
         subtitle.setText(event.subtitle());
 
         delete.setOnClickListener(view -> {
-            try {
-                EventFactory.delete(event);
-            } catch (SQLException e) {
-                if (log != null) {
-                    log.log(e);
-                }
-            }
+            eventDeleteTarget.eventDeleted(event);
         });
     }
 

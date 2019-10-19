@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import androidx.core.content.ContextCompat;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackup;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTask;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.util.concurrent.CountDownLatch;
 
 import static org.junit.Assert.assertTrue;
 
-public class CreateLocalBackupTest {
+public class CreateLocalBackupTaskTest {
 
     private final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
     private final CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -43,9 +43,9 @@ public class CreateLocalBackupTest {
 
     @Test
     public void createLocalBackup() throws InterruptedException {
-        CreateLocalBackup createLocalBackup = new CreateLocalBackup(context, result ->
+        CreateLocalBackupTask createLocalBackupTask = new CreateLocalBackupTask(context, result ->
                 countDownLatch.countDown(), null);
-        createLocalBackup.execute();
+        createLocalBackupTask.execute();
         countDownLatch.await();
 
         File localBackup = localBackupFile();

@@ -4,15 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.BackupCheck;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools.FileCopy;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 import java.io.File;
 
-public class RestoreLocalBackup extends AsyncTask<Void, Void, Boolean> {
+public class RestoreLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
 
     @SuppressLint("StaticFieldLeak")
     private final Context context;
@@ -20,8 +20,7 @@ public class RestoreLocalBackup extends AsyncTask<Void, Void, Boolean> {
     private final String backupPath;
     private final Log log;
 
-    public RestoreLocalBackup(Context context, RestoreLocalBackupTarget restoreLocalBackupTarget,
-                              String backupPath, Log log) {
+    public RestoreLocalBackupTask(Context context, RestoreLocalBackupTarget restoreLocalBackupTarget, String backupPath, Log log) {
         this.context = context;
         this.restoreLocalBackupTarget = restoreLocalBackupTarget;
         this.backupPath = backupPath;

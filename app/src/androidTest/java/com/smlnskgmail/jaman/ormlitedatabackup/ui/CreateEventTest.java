@@ -8,7 +8,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.features.db.BaseDBTest;
 import com.smlnskgmail.jaman.ormlitedatabackup.navigation.MainActivity;
-import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ChildClick;
+import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -79,7 +79,7 @@ public class CreateEventTest extends BaseDBTest {
 
     private void deleteEvent() throws SQLException {
         onView(withId(R.id.events_list)).perform(RecyclerViewActions
-                .actionOnItemAtPosition((int) eventsAtStart, ChildClick.withChildId(R.id.event_delete)));
+                .actionOnItemAtPosition((int) eventsAtStart, ViewChildClick.withChildId(R.id.event_delete)));
 
         checkEventsCount(eventsAtStart);
     }

@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local;
 
 import android.os.Environment;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
 
 public class LocalBackupPath {
 

@@ -4,10 +4,10 @@ import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.BackupCheck;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools.FileCopy;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.settings.DatabaseParameters;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.HelperFactory;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.structure.DatabaseHelper;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.DatabaseHelper;
 import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
 
 public class BackupCheck {

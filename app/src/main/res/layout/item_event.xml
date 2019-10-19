@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
+    android:padding="@dimen/padding_default_double"
     android:clickable="true"
     android:focusable="true"
     android:orientation="horizontal">
@@ -18,7 +18,7 @@
             android:id="@+id/event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@color/colorPrimaryText"
             tools:text="@string/first_event_title" />
 
