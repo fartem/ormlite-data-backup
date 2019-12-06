@@ -1,4 +1,7 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.entities.event;
+package com.smlnskgmail.jaman.ormlitedatabackup.entities;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
@@ -20,20 +23,31 @@ public class Event extends EntityWithId {
     @DatabaseField(dataType = DataType.DATE_STRING)
     private Date date;
 
-    public Event(long id, String title, String subtitle, Date date) {
+    public Event(
+            long id,
+            @NonNull String title,
+            @NonNull String subtitle,
+            @NonNull Date date
+    ) {
         super(id);
         this.title = title;
         this.subtitle = subtitle;
         this.date = date;
     }
 
-    public Event(String title, String subtitle, Date date) {
+    public Event(
+            @NonNull String title,
+            @NonNull String subtitle,
+            @NonNull Date date
+    ) {
         this.title = title;
         this.subtitle = subtitle;
         this.date = date;
     }
 
-    public Event() {}
+    public Event() {
+
+    }
 
     public String title() {
         return title;
@@ -48,7 +62,7 @@ public class Event extends EntityWithId {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) {
             return true;
         }

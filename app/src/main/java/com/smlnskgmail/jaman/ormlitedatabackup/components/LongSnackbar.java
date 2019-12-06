@@ -2,6 +2,8 @@ package com.smlnskgmail.jaman.ormlitedatabackup.components;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.snackbar.Snackbar;
 
 public class LongSnackbar {
@@ -9,13 +11,20 @@ public class LongSnackbar {
     private final View view;
     private final String text;
 
-    public LongSnackbar(View view, String text) {
+    public LongSnackbar(
+            @NonNull View view,
+            @NonNull String text
+    ) {
         this.view = view;
         this.text = text;
     }
 
     public void show() {
-        Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(
+                view,
+                text,
+                Snackbar.LENGTH_LONG
+        ).show();
     }
 
 }

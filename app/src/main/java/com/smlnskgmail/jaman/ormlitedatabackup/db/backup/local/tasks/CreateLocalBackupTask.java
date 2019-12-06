@@ -1,28 +1,30 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 
+import androidx.annotation.NonNull;
+
 import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.FileCopy;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools.FileCopy;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 public class CreateLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
 
     @SuppressLint("StaticFieldLeak")
     private final Context context;
     private final CreateLocalBackupTarget createLocalBackupTarget;
-    private final Log log;
 
-    public CreateLocalBackupTask(Context context, CreateLocalBackupTarget createLocalBackupTarget, Log log) {
+    public CreateLocalBackupTask(
+            @NonNull Context context,
+            @NonNull CreateLocalBackupTarget createLocalBackupTarget
+    ) {
         this.context = context;
         this.createLocalBackupTarget = createLocalBackupTarget;
-        this.log = log;
     }
 
     @Override
@@ -31,22 +33,30 @@ public class CreateLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
         DatabaseParameters databaseParameters = HelperFactory.instance().databaseParameters();
         String from = databaseParameters.databasePath();
         String to = new LocalBackupPath(databaseParameters).pathAsString();
-        return new FileCopy(context, from, to, new ErrorLog()).copy();
+        return new FileCopy(
+                context,
+                from,
+                to
+        ).copy();
     }
 
     private void checkpoint() {
         try {
             HelperFactory.instance().execSQL("PRAGMA wal_checkpoint");
         } catch (SQLiteException e) {
-            if (log != null) {
-                log.log(e);
-            }
+            L.e(e);
         }
     }
 
     @Override
     protected void onPostExecute(Boolean result) {
         createLocalBackupTarget.localBackupCreated(result);
+    }
+
+    public interface CreateLocalBackupTarget {
+
+        void localBackupCreated(boolean result);
+
     }
 
 }

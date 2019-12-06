@@ -3,17 +3,25 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.NonNull;
+
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.DefaultData;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+
+    public static final Class[] DB_CLASSED = new Class[]{
+            Event.class
+    };
 
     private static final String DATABASE_NAME = "ormlite.db";
 
@@ -21,37 +29,51 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final int DATABASE_VERSION = DATABASE_VERSION_1;
 
-    public static final Class[] DB_CLASSED = new Class[]{
-            Event.class
-    };
-
     private final Context context;
-    private Log log;
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
+    @SuppressWarnings("unused")
+    public DatabaseHelper(@NonNull Context context) {
+        super(
+                context,
+                DATABASE_NAME,
+                null,
+                DATABASE_VERSION,
+                R.raw.ormlite_config
+        );
         this.context = context;
     }
 
-    public DatabaseHelper(Context context, String databaseName) {
-        super(context, databaseName, null, DATABASE_VERSION, R.raw.ormlite_config);
+    public DatabaseHelper(
+            @NonNull Context context,
+            @NonNull String databaseName
+    ) {
+        super(
+                context,
+                databaseName,
+                null,
+                DATABASE_VERSION,
+                R.raw.ormlite_config
+        );
         this.context = context;
-    }
-
-    void enableLogs(Log log) {
-        this.log = log;
     }
 
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
             createTables(connectionSource);
-            new DefaultData(context).create();
+            createDefaultEvents();
         } catch (SQLException e) {
-            if (log != null) {
-                log.log(e);
-            }
+            L.e(e);
         }
+    }
+
+    private void createDefaultEvents() {
+        Event firstEvent = new Event(
+                context.getString(R.string.first_event_title),
+                context.getString(R.string.first_event_subtitle),
+                Calendar.getInstance().getTime()
+        );
+        saveEvent(firstEvent);
     }
 
     @SuppressWarnings("unchecked")
@@ -62,8 +84,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion,
-                          int newVersion) {}
+    public void onUpgrade(
+            SQLiteDatabase database,
+            ConnectionSource connectionSource,
+            int oldVersion,
+            int newVersion
+    ) {
+
+    }
 
     String databaseName() {
         return DATABASE_NAME;
@@ -71,6 +99,40 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     Context context() {
         return context;
+    }
+
+    public List<Event> allEvents() {
+        try {
+            return getDao(Event.class).queryForAll();
+        } catch (SQLException e) {
+            L.e(e);
+        }
+        return Collections.emptyList();
+    }
+
+    public void saveEvent(@NonNull Event event) {
+        try {
+            getDao(Event.class).create(event);
+        } catch (SQLException e) {
+            L.e(e);
+        }
+    }
+
+    public void deleteEvent(@NonNull Event event) {
+        try {
+            getDao(Event.class).delete(event);
+        } catch (SQLException e) {
+            L.e(e);
+        }
+    }
+
+    public long countOfEvents() {
+        try {
+            return getDao(Event.class).countOf();
+        } catch (SQLException e) {
+            L.e(e);
+        }
+        return 0;
     }
 
 }

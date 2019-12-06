@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist;
+package com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
 
 import java.util.List;
 
@@ -15,9 +15,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventHolder> {
 
     private final List<Event> events;
 
-    private final EventDeleteTarget eventDeleteTarget;
+    private final EventHolder.EventDeleteTarget eventDeleteTarget;
 
-    public EventsAdapter(List<Event> events, EventDeleteTarget eventDeleteTarget) {
+    public EventsAdapter(
+            @NonNull List<Event> events,
+            @NonNull EventHolder.EventDeleteTarget eventDeleteTarget
+    ) {
         this.events = events;
         this.eventDeleteTarget = eventDeleteTarget;
     }
@@ -26,7 +29,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventHolder> {
     @Override
     public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new EventHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_event, parent, false), eventDeleteTarget);
+                .inflate(
+                        R.layout.item_event,
+                        parent,
+                        false
+                ), eventDeleteTarget);
     }
 
     @Override

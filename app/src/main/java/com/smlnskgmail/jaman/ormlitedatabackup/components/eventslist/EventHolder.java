@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist;
+package com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
 
-class EventHolder extends RecyclerView.ViewHolder {
+public class EventHolder extends RecyclerView.ViewHolder {
 
     private final TextView title;
     private final TextView subtitle;
@@ -28,13 +28,17 @@ class EventHolder extends RecyclerView.ViewHolder {
         this.eventDeleteTarget = eventDeleteTarget;
     }
 
-    void bind(Event event) {
+    void bind(@NonNull Event event) {
         title.setText(event.title());
         subtitle.setText(event.subtitle());
 
-        delete.setOnClickListener(view -> {
-            eventDeleteTarget.eventDeleted(event);
-        });
+        delete.setOnClickListener(view -> eventDeleteTarget.eventDeleted(event));
+    }
+
+    public interface EventDeleteTarget {
+
+        void eventDeleted(@NonNull Event event);
+
     }
 
 }

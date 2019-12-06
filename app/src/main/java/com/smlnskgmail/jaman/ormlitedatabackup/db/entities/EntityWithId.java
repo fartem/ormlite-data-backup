@@ -13,6 +13,8 @@ public abstract class EntityWithId {
     }
 
     @SuppressWarnings("WeakerAccess")
-    public EntityWithId() {}
+    public EntityWithId() {
+
+    }
 
 }

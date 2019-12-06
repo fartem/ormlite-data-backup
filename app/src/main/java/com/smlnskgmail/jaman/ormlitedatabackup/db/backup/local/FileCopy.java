@@ -1,9 +1,11 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local;
 
 import android.content.Context;
 import android.net.Uri;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
+import androidx.annotation.NonNull;
+
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,23 +19,28 @@ public class FileCopy {
     private final Context context;
 
     private String from;
-    private InputStream fromAsStream;
     private final String to;
 
-    private final Log log;
+    private InputStream fromAsStream;
 
-    public FileCopy(Context context, String from, String to, Log log) {
+    public FileCopy(
+            @NonNull Context context,
+            @NonNull String from,
+            @NonNull String to
+    ) {
         this.context = context;
         this.from = from;
         this.to = to;
-        this.log = log;
     }
 
-    public FileCopy(Context context, InputStream fromAsStream, String to, Log log) {
+    public FileCopy(
+            @NonNull Context context,
+            @NonNull InputStream stream,
+            @NonNull String to
+    ) {
         this.context = context;
-        this.fromAsStream = fromAsStream;
+        this.fromAsStream = stream;
         this.to = to;
-        this.log = log;
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -41,8 +48,11 @@ public class FileCopy {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
-            inputStream = fromAsStream != null ? fromAsStream
-                    : context.getContentResolver().openInputStream(Uri.fromFile(new File(from)));
+            inputStream = fromAsStream != null
+                    ? fromAsStream
+                    : context.getContentResolver().openInputStream(
+                            Uri.fromFile(new File(from))
+            );
             File toFile = new File(to);
             if (toFile.exists()) {
                 toFile.delete();
@@ -63,14 +73,14 @@ public class FileCopy {
             outputStream.flush();
             return true;
         } catch (Exception e) {
-            log.log(e);
+            L.e(e);
             return false;
         } finally {
             try {
                 Objects.requireNonNull(inputStream).close();
                 Objects.requireNonNull(outputStream).close();
             } catch (IOException e) {
-                log.log(e);
+                L.e(e);
             }
         }
     }

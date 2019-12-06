@@ -2,13 +2,15 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local;
 
 import android.os.Environment;
 
+import androidx.annotation.NonNull;
+
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
 
 public class LocalBackupPath {
 
     private final DatabaseParameters databaseParameters;
 
-    public LocalBackupPath(DatabaseParameters databaseParameters) {
+    public LocalBackupPath(@NonNull DatabaseParameters databaseParameters) {
         this.databaseParameters = databaseParameters;
     }
 

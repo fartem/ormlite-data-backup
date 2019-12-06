@@ -1,54 +1,48 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.navigation;
+package com.smlnskgmail.jaman.ormlitedatabackup;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.components.BaseActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.LongSnackbar;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets.CreateEventBottomSheet;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist.EventHolder;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist.EventsAdapter;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.Backup;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.restore.RestoreLocalBackupTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.EventFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.ui.CreateEventBottomSheet;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.event.ui.EventCreateTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.ErrorLog;
-import com.smlnskgmail.jaman.ormlitedatabackup.logs.Log;
-import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventDeleteTarget;
-import com.smlnskgmail.jaman.ormlitedatabackup.navigation.eventslist.EventsAdapter;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.CreateLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.RestoreLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import jahirfiquitiva.libs.fabsmenu.FABsMenu;
 
-public class MainActivity extends BaseActivity implements EventCreateTarget, EventDeleteTarget {
+public class MainActivity extends AppCompatActivity
+        implements CreateEventBottomSheet.EventCreateTarget, EventHolder.EventDeleteTarget {
 
     private static final int REQUEST_CODE_STORAGE = 101;
 
     private final List<Event> events = new ArrayList<>();
-    private final Log errorLog = new ErrorLog();
 
     private RecyclerView eventsList;
     private FABsMenu menuFAB;
 
     @Override
-    public int layoutResId() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    public void init() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         initViews();
         loadEvents();
     }
@@ -61,15 +55,20 @@ public class MainActivity extends BaseActivity implements EventCreateTarget, Eve
             hideFab();
             CreateEventBottomSheet createEventBottomSheet = new CreateEventBottomSheet();
             createEventBottomSheet.setupCreateEventTarget(MainActivity.this);
-            createEventBottomSheet.show(getSupportFragmentManager(), createEventBottomSheet.getClass().getName());
+            createEventBottomSheet.show(
+                    getSupportFragmentManager(),
+                    createEventBottomSheet.getClass().getName()
+            );
         });
         setClickToFABTitle(R.id.create_local_backup, view -> {
             hideFab();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new Backup(MainActivity.this, (CreateLocalBackupTarget) success -> {
-                    int messageResId = success ? R.string.callback_backup_create_success : R.string.callback_backup_create_error;
+                new Backup(MainActivity.this, (CreateLocalBackupTask.CreateLocalBackupTarget) success -> {
+                    int messageResId = success
+                            ? R.string.callback_backup_create_success
+                            : R.string.callback_backup_create_error;
                     showLongSnackbar(messageResId);
                 }).createLocalBackup();
             }
@@ -79,8 +78,10 @@ public class MainActivity extends BaseActivity implements EventCreateTarget, Eve
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new Backup(MainActivity.this, (RestoreLocalBackupTarget) success -> {
-                    int messageResId = success ? R.string.callback_backup_restore_success : R.string.callback_backup_restore_error;
+                new Backup(MainActivity.this, (RestoreLocalBackupTask.RestoreLocalBackupTarget) success -> {
+                    int messageResId = success
+                            ? R.string.callback_backup_restore_success
+                            : R.string.callback_backup_restore_error;
                     showLongSnackbar(messageResId);
                     // TODO: restart app
                 }).restoreLocalBackup();
@@ -109,7 +110,8 @@ public class MainActivity extends BaseActivity implements EventCreateTarget, Eve
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_STORAGE) {
             int snackbarMessageResId;
@@ -127,42 +129,33 @@ public class MainActivity extends BaseActivity implements EventCreateTarget, Eve
     }
 
     private void showLongSnackbar(int messageResId) {
-        new LongSnackbar(findViewById(android.R.id.content), getString(messageResId)).show();
+        new LongSnackbar(
+                findViewById(android.R.id.content),
+                getString(messageResId)
+        ).show();
     }
 
     @Override
     public void eventAdded(@NonNull Event event) {
-        try {
-            EventFactory.save(event);
-            events.add(event);
+        HelperFactory.instance().databaseHelper().saveEvent(event);
+        events.add(event);
 
-            Objects.requireNonNull(eventsList.getAdapter()).notifyItemInserted(events.size() - 1);
-        } catch (SQLException e) {
-            errorLog.log(e);
-        }
+        Objects.requireNonNull(eventsList.getAdapter()).notifyItemInserted(events.size() - 1);
     }
 
     private void loadEvents() {
-        try {
-            events.addAll(EventFactory.allEvents());
-            eventsList.setAdapter(new EventsAdapter(events, this));
-        } catch (SQLException e) {
-            errorLog.log(e);
-        }
+        events.addAll(HelperFactory.instance().databaseHelper().allEvents());
+        eventsList.setAdapter(new EventsAdapter(events, this));
     }
 
     @Override
     public void eventDeleted(@NonNull Event event) {
-        try {
-            EventFactory.delete(event);
+        HelperFactory.instance().databaseHelper().deleteEvent(event);
 
-            int indexOfEvent = events.indexOf(event);
-            events.remove(event);
+        int indexOfEvent = events.indexOf(event);
+        events.remove(event);
 
-            Objects.requireNonNull(eventsList.getAdapter()).notifyItemRemoved(indexOfEvent);
-        } catch (SQLException e) {
-            errorLog.log(e);
-        }
+        Objects.requireNonNull(eventsList.getAdapter()).notifyItemRemoved(indexOfEvent);
     }
 
 }

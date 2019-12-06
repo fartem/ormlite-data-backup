@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.features.backup;
+package com.smlnskgmail.jaman.ormlitedatabackup.backup;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.BackupCheck;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.DatabaseParameters;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.tools.FileCopy;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.FileCopy;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 public class BackupCheckTest {
 
@@ -32,25 +32,38 @@ public class BackupCheckTest {
     @Test
     public void checkValidDB() throws IOException {
         copyBackupFileToAppFolder(true);
-        tryRestoreBackup();
+        tryRestoreBackup(true);
     }
 
     @Test
     public void checkInvalidDB() throws IOException {
         copyBackupFileToAppFolder(false);
-        tryRestoreBackup();
+        tryRestoreBackup(false);
     }
 
     private void copyBackupFileToAppFolder(boolean isValid) throws IOException {
         String backupFolder = isValid ? "valid" : "invalid";
-        InputStream backupFile = context.getResources().getAssets().open("backups/" + backupFolder + "/ormlite.db");
-        new FileCopy(context, backupFile, databaseParameters.databasePath(), null).copy();
+        InputStream backupFile = context.getResources().getAssets().open(
+                "backups/" + backupFolder + "/ormlite.backup"
+        );
+
+        new FileCopy(
+                targetContext,
+                backupFile,
+                databaseParameters.databasePath()
+        ).copy();
     }
 
-    private void tryRestoreBackup() {
-        BackupCheck backupCheck = new BackupCheck(targetContext, databaseParameters.databasePath(), null);
+    private void tryRestoreBackup(boolean isValid) {
+        BackupCheck backupCheck = new BackupCheck(
+                targetContext,
+                databaseParameters.databasePath()
+        );
 
-        assertFalse(backupCheck.isValidDB());
+        assertEquals(
+                isValid,
+                backupCheck.isValidDB()
+        );
     }
 
 }

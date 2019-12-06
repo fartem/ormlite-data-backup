@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.features.backup;
+package com.smlnskgmail.jaman.ormlitedatabackup.backup;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.LocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.create.CreateLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.CreateLocalBackupTask;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,14 +37,19 @@ public class CreateLocalBackupTaskTest {
     }
 
     private boolean hasStorageAccessPermission() {
-        int storagePermissionStatus = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int storagePermissionStatus = ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        );
         return storagePermissionStatus == PackageManager.PERMISSION_GRANTED;
     }
 
     @Test
     public void createLocalBackup() throws InterruptedException {
-        CreateLocalBackupTask createLocalBackupTask = new CreateLocalBackupTask(context, result ->
-                countDownLatch.countDown(), null);
+        CreateLocalBackupTask createLocalBackupTask = new CreateLocalBackupTask(
+                context,
+                result -> countDownLatch.countDown()
+        );
         createLocalBackupTask.execute();
         countDownLatch.await();
 

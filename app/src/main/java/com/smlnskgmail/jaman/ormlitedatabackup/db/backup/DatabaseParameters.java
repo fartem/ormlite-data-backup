@@ -2,12 +2,17 @@ package com.smlnskgmail.jaman.ormlitedatabackup.db.backup;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 public class DatabaseParameters {
 
     private final Context context;
     private final String databaseName;
 
-    public DatabaseParameters(Context context, String databaseName) {
+    public DatabaseParameters(
+            @NonNull Context context,
+            @NonNull String databaseName
+    ) {
         this.context = context;
         this.databaseName = databaseName;
     }
