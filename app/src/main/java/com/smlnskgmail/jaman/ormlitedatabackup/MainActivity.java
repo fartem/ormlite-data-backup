@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.components.LongSnackbar;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets.CreateEventBottomSheet;
@@ -22,6 +21,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.Backup;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.CreateLocalBackupTask;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.RestoreLocalBackupTask;
 import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.support.AdaptiveRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
     private final List<Event> events = new ArrayList<>();
 
-    private RecyclerView eventsList;
+    private AdaptiveRecyclerView eventsList;
     private FABsMenu menuFAB;
 
     @Override
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity
 
     private void initViews() {
         eventsList = findViewById(R.id.events_list);
+        eventsList.setEmptyMessageView(findViewById(R.id.view_empty_message));
+
         menuFAB = findViewById(R.id.main_fab_menu);
 
         setClickToFABTitle(R.id.create_event, view -> {

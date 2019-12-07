@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_empty_message"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_default">
+
+    <ImageView
+        android:id="@+id/empty_message_image"
+        android:layout_width="@dimen/image_empty_message"
+        android:layout_height="@dimen/image_empty_message"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:tint="@color/colorEmptyMessageText"
+        android:src="@drawable/ic_event_note" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_default"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_medium"
+        android:layout_below="@id/empty_message_image"
+        android:textColor="@color/colorEmptyMessageText"
+        android:text="List is empty!" />
+
+</RelativeLayout>

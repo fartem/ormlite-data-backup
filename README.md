@@ -9,7 +9,7 @@
 ## About
 
 Demo app for demonstration a way of backup user data.
-Main functionality is working. May contains some UI bugs.
+Main functionality is working.
 
 ## Features
 

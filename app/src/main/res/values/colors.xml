@@ -11,6 +11,7 @@
     <!-- text -->
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
+    <color name="colorEmptyMessageText">#8B8B8B</color>
 
     <!-- FAB -->
     <color name="colorBackgroundFab">#7A757575</color>

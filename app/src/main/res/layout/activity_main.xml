@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <include layout="@layout/view_empty_message" />
+
+    <com.smlnskgmail.jaman.ormlitedatabackup.support.AdaptiveRecyclerView
         android:id="@+id/events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

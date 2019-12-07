@@ -9,4 +9,7 @@
 
     <!-- text -->
     <dimen name="text_size_medium">16sp</dimen>
+
+    <!-- images -->
+    <dimen name="image_empty_message">96dp</dimen>
 </resources>
