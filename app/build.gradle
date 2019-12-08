@@ -36,10 +36,10 @@ dependencies {
     // ProcessPhoenix
     implementation 'com.jakewharton:process-phoenix:2.0.0'
 
-    // Test
+    // Unit tests
     testImplementation 'junit:junit:4.12'
 
-    // AndroidTest
+    // Android tests
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'
