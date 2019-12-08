@@ -1,6 +1,7 @@
 package com.smlnskgmail.jaman.ormlitedatabackup;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.jakewharton.processphoenix.ProcessPhoenix;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.LongSnackbar;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets.CreateEventBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist.EventHolder;
@@ -80,13 +82,12 @@ public class MainActivity extends AppCompatActivity
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new Backup(MainActivity.this, (RestoreLocalBackupTask.RestoreLocalBackupTarget) success -> {
-                    int messageResId = success
-                            ? R.string.callback_backup_restore_success
-                            : R.string.callback_backup_restore_error;
-                    showLongSnackbar(messageResId);
-                    // TODO: restart app
-                }).restoreLocalBackup();
+                new Backup(MainActivity.this, (RestoreLocalBackupTask.RestoreLocalBackupTarget) success ->
+                        ProcessPhoenix.triggerRebirth(
+                                this,
+                                new Intent(this, MainActivity.class)
+                        )
+                ).restoreLocalBackup();
             }
         });
     }

@@ -8,7 +8,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "0.9.7"
+        versionName "0.9.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +32,9 @@ dependencies {
 
     // FAB menu
     implementation 'me.jahirfiquitiva:FABsMenu:1.1.4'
+
+    // ProcessPhoenix
+    implementation 'com.jakewharton:process-phoenix:2.0.0'
 
     // Test
     testImplementation 'junit:junit:4.12'
