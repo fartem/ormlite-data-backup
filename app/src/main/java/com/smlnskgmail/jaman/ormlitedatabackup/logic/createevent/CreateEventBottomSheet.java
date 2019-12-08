@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.createevent;
 
 import android.view.View;
 import android.widget.EditText;
@@ -7,7 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.BaseBottomSheet;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event;
 
 import java.text.DateFormat;
 import java.util.Calendar;

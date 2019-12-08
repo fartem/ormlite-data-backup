@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.main;
 
 import android.Manifest;
 import android.content.Intent;
@@ -10,20 +10,21 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.jakewharton.processphoenix.ProcessPhoenix;
+import com.smlnskgmail.jaman.ormlitedatabackup.R;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.BaseActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.LongSnackbar;
-import com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets.CreateEventBottomSheet;
-import com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist.EventHolder;
-import com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist.EventsAdapter;
+import com.smlnskgmail.jaman.ormlitedatabackup.components.views.AdaptiveRecyclerView;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.Backup;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.CreateLocalBackupTask;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.backup.local.tasks.RestoreLocalBackupTask;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.support.AdaptiveRecyclerView;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.createevent.CreateEventBottomSheet;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.main.eventslist.EventHolder;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.main.eventslist.EventsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ import java.util.Objects;
 
 import jahirfiquitiva.libs.fabsmenu.FABsMenu;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements CreateEventBottomSheet.EventCreateTarget, EventHolder.EventDeleteTarget {
 
     private static final int REQUEST_CODE_STORAGE = 101;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         initViews();
         loadEvents();
     }
@@ -159,6 +159,11 @@ public class MainActivity extends AppCompatActivity
         events.remove(event);
 
         Objects.requireNonNull(eventsList.getAdapter()).notifyItemRemoved(indexOfEvent);
+    }
+
+    @Override
+    public int layoutResId() {
+        return R.layout.activity_main;
     }
 
 }

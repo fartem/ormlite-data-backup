@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.eventslist;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.main.eventslist;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event;
 
 import java.util.List;
 

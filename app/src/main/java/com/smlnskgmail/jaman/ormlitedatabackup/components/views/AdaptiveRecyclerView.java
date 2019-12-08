@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.support;
+package com.smlnskgmail.jaman.ormlitedatabackup.components.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

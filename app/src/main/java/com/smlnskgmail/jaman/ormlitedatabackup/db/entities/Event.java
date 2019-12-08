@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.entities;
+package com.smlnskgmail.jaman.ormlitedatabackup.db.entities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.EntityWithId;
 
 import java.util.Date;
 import java.util.Objects;

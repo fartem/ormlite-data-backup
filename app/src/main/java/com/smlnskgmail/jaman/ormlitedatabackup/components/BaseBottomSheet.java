@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets;
+package com.smlnskgmail.jaman.ormlitedatabackup.components;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-abstract class BaseBottomSheet extends BottomSheetDialogFragment {
+public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
 
     @Override
     public final void onViewCreated(

@@ -3,10 +3,10 @@ package com.smlnskgmail.jaman.ormlitedatabackup.ui;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.rule.ActivityTestRule;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.main.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 
