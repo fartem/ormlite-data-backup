@@ -1,19 +1,19 @@
 package com.smlnskgmail.jaman.ormlitedatabackup;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 
 public class App extends android.app.Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        HelperFactory.setHelper(this);
+        OrmLiteHelperFactory.setHelper(this);
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
-        HelperFactory.releaseHelper();
+        OrmLiteHelperFactory.releaseHelper();
     }
 
 }

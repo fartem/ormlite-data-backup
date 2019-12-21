@@ -2,7 +2,7 @@
 # generated on 2019/12/06 08:51:17
 #
 # --table-start--
-dataClass=com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event
+dataClass=com.smlnskgmail.jaman.ormlitedatabackup.logic.db.entities.Event
 tableName=event
 # --table-fields-start--
 # --field-start--

@@ -3,11 +3,11 @@ package com.smlnskgmail.jaman.ormlitedatabackup.ui;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.rule.ActivityTestRule;
 
+import com.smlnskgmail.jaman.ormlitedatabackup.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.HelperFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.db.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.main.MainActivity;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.LogTool;
 import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 
 import org.junit.Before;
@@ -37,7 +37,7 @@ public class CreateEventTest {
 
     @Before
     public void saveEventsCount() {
-        eventsAtStart = HelperFactory.instance().databaseHelper().countOfEvents();
+        eventsAtStart = OrmLiteHelperFactory.databaseHelper().countOfEvents();
     }
 
     @Test
@@ -79,7 +79,7 @@ public class CreateEventTest {
     }
 
     private void validateLastEvent() {
-        List<Event> events = HelperFactory.instance().databaseHelper().allEvents();
+        List<Event> events = OrmLiteHelperFactory.databaseHelper().allEvents();
         Event lastEvent = events.get(events.size() - 1);
 
         assertEquals(
@@ -109,7 +109,7 @@ public class CreateEventTest {
     private void checkEventsCount(long count) {
         assertEquals(
                 count,
-                HelperFactory.instance().databaseHelper().countOfEvents()
+                OrmLiteHelperFactory.databaseHelper().countOfEvents()
         );
     }
 
@@ -117,7 +117,7 @@ public class CreateEventTest {
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
-            L.e(e);
+            LogTool.e(e);
         }
     }
 
