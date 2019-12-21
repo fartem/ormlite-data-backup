@@ -3,6 +3,7 @@
 ORMLite Data Backup
 =======================
 
+![Travis CI](https://img.shields.io/travis/fartem/ormlite-data-backup?style=flat-square)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-site-brightgreen?style=flat-square)](https://android-arsenal.com/details/3/7940)
 ![Open issues](https://img.shields.io/github/issues-raw/fartem/ormlite-data-backup.svg?color=ff534a&style=flat-square)
 
