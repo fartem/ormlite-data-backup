@@ -10,39 +10,39 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 @SuppressLint("StaticFieldLeak")
 public class OrmLiteHelperFactory {
 
-    private static OrmLiteDatabaseHelper ORMLiteDatabaseHelper;
+    private static OrmLiteDatabaseHelper ormLiteDatabaseHelper;
 
-    private static OrmLiteDatabaseParameters ORMLiteDatabaseParameters;
+    private static OrmLiteDatabaseParameters ormLiteDatabaseParameters;
 
     private OrmLiteHelperFactory(@NonNull OrmLiteDatabaseHelper ormLiteDatabaseHelper) {
-        this.ORMLiteDatabaseHelper = ormLiteDatabaseHelper;
+        OrmLiteHelperFactory.ormLiteDatabaseHelper = ormLiteDatabaseHelper;
     }
 
     public static void setHelper(@NonNull Context context) {
-        if (ORMLiteDatabaseHelper != null) {
+        if (ormLiteDatabaseHelper != null) {
             releaseHelper();
         }
-        ORMLiteDatabaseHelper = OpenHelperManager.getHelper(context, OrmLiteDatabaseHelper.class);
+        ormLiteDatabaseHelper = OpenHelperManager.getHelper(context, OrmLiteDatabaseHelper.class);
     }
 
     public static OrmLiteDatabaseHelper databaseHelper() {
-        return ORMLiteDatabaseHelper;
+        return ormLiteDatabaseHelper;
     }
 
     public static void releaseHelper() {
         OpenHelperManager.releaseHelper();
-        ORMLiteDatabaseHelper = null;
+        ormLiteDatabaseHelper = null;
     }
 
     public static OrmLiteDatabaseParameters databaseParameters() {
-        if (ORMLiteDatabaseParameters == null) {
-            String databaseName = ORMLiteDatabaseHelper.databaseName();
-            ORMLiteDatabaseParameters = new OrmLiteDatabaseParameters(
-                    ORMLiteDatabaseHelper.context(),
+        if (ormLiteDatabaseParameters == null) {
+            String databaseName = ormLiteDatabaseHelper.databaseName();
+            ormLiteDatabaseParameters = new OrmLiteDatabaseParameters(
+                    ormLiteDatabaseHelper.context(),
                     databaseName
             );
         }
-        return ORMLiteDatabaseParameters;
+        return ormLiteDatabaseParameters;
     }
 
 }
