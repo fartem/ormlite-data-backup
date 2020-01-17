@@ -1,6 +1,6 @@
-<img src="media/ic_app.png" height="100px" />
+<img src="media/logo/ic_app.png" height="100px" />
 
-ORMLite Data Backup
+OrmLite Data Backup
 =======================
 
 ![Travis CI](https://img.shields.io/travis/fartem/ormlite-data-backup)
@@ -19,15 +19,20 @@ Features
 * create local (on running device) backup;
 * restore local backup.
 
+Downloads
+-------------------
+
+<img src="media/qrcodes/github_download.png" height="150px" />
+
 Screenshots
 -------------------
 
 <p align="center">
-  <img src="media/screenshot_01.png" width="150" />
-  <img src="media/screenshot_02.png" width="150" />
-  <img src="media/screenshot_03.png" width="150" />
-  <img src="media/screenshot_04.png" width="150" />
-  <img src="media/screenshot_05.png" width="150" />
+  <img src="media/screenshots/screenshot_01.png" width="150" />
+  <img src="media/screenshots/screenshot_02.png" width="150" />
+  <img src="media/screenshots/screenshot_03.png" width="150" />
+  <img src="media/screenshots/screenshot_04.png" width="150" />
+  <img src="media/screenshots/screenshot_05.png" width="150" />
 </p>
 
 Contributors
