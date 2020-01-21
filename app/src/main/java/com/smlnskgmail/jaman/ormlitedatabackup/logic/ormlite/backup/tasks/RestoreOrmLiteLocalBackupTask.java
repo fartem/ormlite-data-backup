@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.tasks;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteBackupCheck;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.FileCopy;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.FileCopy;
 
 import java.io.File;
 

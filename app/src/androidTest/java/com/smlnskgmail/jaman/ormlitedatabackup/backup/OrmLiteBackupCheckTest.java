@@ -7,7 +7,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteBackupCheck;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.FileCopy;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.FileCopy;
 
 import org.junit.Before;
 import org.junit.Test;

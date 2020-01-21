@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup;
 
 import android.content.Context;
 import android.net.Uri;

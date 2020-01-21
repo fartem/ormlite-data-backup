@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.OrmLiteLocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.tasks.CreateOrmLiteLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.CreateOrmLiteLocalBackupTask;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities;
 
 import com.j256.ormlite.field.DatabaseField;
 
-public abstract class EntityWithId {
+abstract class EntityWithId {
 
     @SuppressWarnings("FieldCanBeLocal")
     @DatabaseField(generatedId = true)

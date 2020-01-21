@@ -28,7 +28,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventHolder> implements 
                         R.layout.item_event,
                         parent,
                         false
-                ), this::eventDeleted);
+                ), this);
     }
 
     @Override

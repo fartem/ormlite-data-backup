@@ -18,10 +18,11 @@ import com.smlnskgmail.jaman.ormlitedatabackup.components.snackbars.LongSnackbar
 import com.smlnskgmail.jaman.ormlitedatabackup.components.views.AdaptiveRecyclerView;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.event.actions.CreateEventBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.event.list.EventsAdapter;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteBackup;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.tasks.CreateOrmLiteLocalBackupTask;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.local.tasks.RestoreOrmLiteLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.CreateOrmLiteLocalBackupTask;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.RestoreOrmLiteLocalBackupTask;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 
 import java.util.ArrayList;
@@ -66,12 +67,15 @@ public class MainActivity extends BaseActivity implements CreateEventBottomSheet
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new OrmLiteBackup(MainActivity.this, (CreateOrmLiteLocalBackupTask.CreateLocalBackupTarget) success -> {
-                    int messageResId = success
-                            ? R.string.callback_backup_create_success
-                            : R.string.callback_backup_create_error;
-                    showLongSnackbar(messageResId);
-                }).createLocalBackup();
+                new CreateOrmLiteLocalBackupTask(
+                        MainActivity.this,
+                        success -> {
+                            int messageResId = success
+                                    ? R.string.callback_backup_create_success
+                                    : R.string.callback_backup_create_error;
+                            showLongSnackbar(messageResId);
+                        }
+                ).execute();
             }
         });
         setClickToFABTitle(R.id.restore_local_backup, view -> {
@@ -79,14 +83,21 @@ public class MainActivity extends BaseActivity implements CreateEventBottomSheet
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
-                new OrmLiteBackup(MainActivity.this, (RestoreOrmLiteLocalBackupTask.RestoreLocalBackupTarget) success ->
-                        ProcessPhoenix.triggerRebirth(
+                new RestoreOrmLiteLocalBackupTask(
+                        MainActivity.this,
+                        success -> ProcessPhoenix.triggerRebirth(
                                 this,
                                 new Intent(this, MainActivity.class)
-                        )
-                ).restoreLocalBackup();
+                        ),
+                        localDatabasePath()
+                ).execute();
             }
         });
+    }
+
+    private String localDatabasePath() {
+        OrmLiteDatabaseParameters ormLiteDatabaseParameters = OrmLiteHelperFactory.databaseParameters();
+        return new OrmLiteLocalBackupPath(ormLiteDatabaseParameters).pathAsString();
     }
 
     private void setClickToFABTitle(int resId, View.OnClickListener clickListener) {
@@ -110,8 +121,11 @@ public class MainActivity extends BaseActivity implements CreateEventBottomSheet
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_STORAGE) {
             int snackbarMessageResId;
