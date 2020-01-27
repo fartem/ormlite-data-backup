@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'checkstyle'
+apply from: 'checkstyle.gradle'
+apply from: 'cpd.gradle'
 
 android {
     compileSdkVersion 29
@@ -22,27 +23,6 @@ android {
     }
 }
 
-checkstyle {
-    toolVersion '8.26'
-    ignoreFailures false
-    showViolations true
-}
-
-task checkstyle(type: Checkstyle) {
-    group 'verification'
-
-    config project.resources.text.fromUri(
-            "https://raw.githubusercontent.com/fartem/repository-rules/master/java/checkstyle/checkstyle.xml"
-    )
-    source rootProject.file('app/src/main/java')
-    classpath = files()
-
-    reports {
-        xml.enabled true
-        xml.destination rootProject.file("checkstyle-result.xml")
-    }
-}
-
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -59,7 +39,7 @@ dependencies {
     implementation 'com.jakewharton:process-phoenix:2.0.0'
 
     // Unit tests
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
     // Android tests
     androidTestImplementation 'androidx.test:runner:1.2.0'
