@@ -7,7 +7,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.LogTool;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 
 import org.junit.Before;
@@ -30,8 +30,8 @@ public class CreateEventTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    private final String eventTitle = "Test event's title";
-    private final String eventSubtitle = "Test event's subtitle";
+    private final String eventTitle = "Test title";
+    private final String eventSubtitle = "Test subtitle";
 
     private long eventsAtStart = 0;
 
@@ -48,7 +48,8 @@ public class CreateEventTest {
     }
 
     private void createNewEvent() {
-        onView(withId(R.id.main_fab_menu)).perform(click());
+        onView(withId(R.id.main_fab_menu))
+                .perform(click());
         delay();
 
         onView(withId(R.id.create_event))
@@ -117,7 +118,7 @@ public class CreateEventTest {
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
-            LogTool.e(e);
+            L.e(e);
         }
     }
 

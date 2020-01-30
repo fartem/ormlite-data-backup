@@ -11,7 +11,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabasePara
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.FileCopy;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.LogTool;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -44,7 +44,7 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
         try {
             OrmLiteHelperFactory.databaseHelper().execSQL("PRAGMA wal_checkpoint");
         } catch (SQLiteException e) {
-            LogTool.e(e);
+            L.e(e);
         }
     }
 

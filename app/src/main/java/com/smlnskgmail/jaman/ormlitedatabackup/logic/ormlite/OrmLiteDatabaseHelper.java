@@ -11,7 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.LogTool;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -64,7 +64,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
             createTables(connectionSource);
             createDefaultEvents();
         } catch (SQLException e) {
-            LogTool.e(e);
+            L.e(e);
         }
     }
 
@@ -106,7 +106,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             return getDao(Event.class).queryForAll();
         } catch (SQLException e) {
-            LogTool.e(e);
+            L.e(e);
         }
         return Collections.emptyList();
     }
@@ -115,7 +115,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             getDao(Event.class).create(event);
         } catch (SQLException e) {
-            LogTool.e(e);
+            L.e(e);
         }
     }
 
@@ -123,7 +123,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             getDao(Event.class).delete(event);
         } catch (SQLException e) {
-            LogTool.e(e);
+            L.e(e);
         }
     }
 
@@ -131,7 +131,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             return getDao(Event.class).countOf();
         } catch (SQLException e) {
-            LogTool.e(e);
+            L.e(e);
         }
         return 0;
     }

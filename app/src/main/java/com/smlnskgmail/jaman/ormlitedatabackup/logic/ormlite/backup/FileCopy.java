@@ -5,7 +5,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.LogTool;
+import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -73,14 +73,14 @@ public class FileCopy {
             outputStream.flush();
             return true;
         } catch (Exception e) {
-            LogTool.e(e);
+            L.e(e);
             return false;
         } finally {
             try {
                 Objects.requireNonNull(inputStream).close();
                 Objects.requireNonNull(outputStream).close();
             } catch (IOException e) {
-                LogTool.e(e);
+                L.e(e);
             }
         }
     }

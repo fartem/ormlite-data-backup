@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:arv="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/view_empty_message" />
-
-    <com.smlnskgmail.jaman.ormlitedatabackup.components.views.AdaptiveRecyclerView
+    <com.smlnskgmail.jaman.adaptiverecyclerview.AdaptiveRecyclerView
         android:id="@+id/events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.smlnskgmail.jaman.adaptiverecyclerview.AdaptiveMessageView
+        android:id="@+id/events_list_message_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        arv:message_image_tint="@color/colorEmptyMessageText"
+        arv:message_image="@drawable/ic_event_note"
+        arv:message_text_color="@color/colorEmptyMessageText" />
 
     <jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
         android:layout_width="match_parent"

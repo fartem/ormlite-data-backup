@@ -13,9 +13,9 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 
 import com.jakewharton.processphoenix.ProcessPhoenix;
+import com.smlnskgmail.jaman.adaptiverecyclerview.AdaptiveRecyclerView;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.activities.BaseActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.components.snackbars.LongSnackbar;
-import com.smlnskgmail.jaman.ormlitedatabackup.components.views.AdaptiveRecyclerView;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.event.actions.CreateEventBottomSheet;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.event.list.EventsAdapter;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseParameters;
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity implements CreateEventBottomSheet
 
     private void initViews() {
         eventsList = findViewById(R.id.events_list);
-        eventsList.setEmptyMessageView(findViewById(R.id.view_empty_message));
+        eventsList.setMessageView(findViewById(R.id.events_list_message_view));
 
         menuFAB = findViewById(R.id.main_fab_menu);
 
