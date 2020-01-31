@@ -50,8 +50,7 @@ public class FileCopy {
         try {
             inputStream = fromAsStream != null
                     ? fromAsStream
-                    : context.getContentResolver().openInputStream(
-                            Uri.fromFile(new File(from))
+                    : context.getContentResolver().openInputStream(Uri.fromFile(new File(from))
             );
             File toFile = new File(to);
             if (toFile.exists()) {
@@ -66,7 +65,7 @@ public class FileCopy {
 
             byte[] buffer = new byte[1024];
             int length;
-            while ((length = Objects.requireNonNull(inputStream).read(buffer)) > 0) {
+            while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
 
@@ -77,8 +76,12 @@ public class FileCopy {
             return false;
         } finally {
             try {
-                Objects.requireNonNull(inputStream).close();
-                Objects.requireNonNull(outputStream).close();
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
             } catch (IOException e) {
                 L.e(e);
             }
