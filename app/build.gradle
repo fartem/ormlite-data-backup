@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply from: 'checkstyle.gradle'
 apply from: 'cpd.gradle'
+apply from: 'jacoco.gradle'
 
 android {
     compileSdkVersion 29
@@ -12,7 +13,15 @@ android {
         versionCode 1
         versionName "1.0.4"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.smlnskgmail.jaman.ormlitedatabackup.runner.AndroidJacocoTestRunner"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+    }
+    lintOptions {
+        abortOnError false
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -25,7 +34,7 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     // AdaptiveRecyclerView

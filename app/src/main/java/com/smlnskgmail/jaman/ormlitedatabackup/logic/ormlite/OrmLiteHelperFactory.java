@@ -14,7 +14,9 @@ public class OrmLiteHelperFactory {
 
     private static OrmLiteDatabaseParameters ormLiteDatabaseParameters;
 
-    private OrmLiteHelperFactory(@NonNull OrmLiteDatabaseHelper ormLiteDatabaseHelper) {
+    private OrmLiteHelperFactory(
+            @NonNull OrmLiteDatabaseHelper ormLiteDatabaseHelper
+    ) {
         OrmLiteHelperFactory.ormLiteDatabaseHelper = ormLiteDatabaseHelper;
     }
 
@@ -22,7 +24,10 @@ public class OrmLiteHelperFactory {
         if (ormLiteDatabaseHelper != null) {
             releaseHelper();
         }
-        ormLiteDatabaseHelper = OpenHelperManager.getHelper(context, OrmLiteDatabaseHelper.class);
+        ormLiteDatabaseHelper = OpenHelperManager.getHelper(
+                context,
+                OrmLiteDatabaseHelper.class
+        );
     }
 
     public static OrmLiteDatabaseHelper databaseHelper() {

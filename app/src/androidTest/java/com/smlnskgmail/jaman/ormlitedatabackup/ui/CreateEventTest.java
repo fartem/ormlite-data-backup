@@ -2,6 +2,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup.ui;
 
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
@@ -13,6 +14,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Calendar;
 import java.util.List;
@@ -25,10 +27,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(AndroidJUnit4.class)
 public class CreateEventTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
+            MainActivity.class
+    );
 
     private final String eventTitle = "Test title";
     private final String eventSubtitle = "Test subtitle";
@@ -48,14 +53,11 @@ public class CreateEventTest {
     }
 
     private void createNewEvent() {
-        onView(withId(R.id.main_fab_menu))
-                .perform(click());
+        onView(withId(R.id.main_fab_menu)).perform(click());
         delay();
 
-        onView(withId(R.id.create_event))
-                .perform(click());
-        onView(withId(R.id.create_event))
-                .perform(click()); // Cannot click on FAB in previous operation
+        onView(withId(R.id.create_event)).perform(click());
+        onView(withId(R.id.create_event)).perform(click()); // Cannot click on FAB in previous operation
         delay();
 
         onView(withId(R.id.new_event_title))
@@ -72,8 +74,7 @@ public class CreateEventTest {
                 );
         delay();
 
-        onView(withId(R.id.add_new_event))
-                .perform(click());
+        onView(withId(R.id.add_new_event)).perform(click());
         delay();
 
         checkEventsCount(eventsAtStart + 1);
@@ -93,7 +94,9 @@ public class CreateEventTest {
                 lastEvent.subtitle()
         );
 
-        assertTrue(lastEvent.date().before(Calendar.getInstance().getTime()));
+        assertTrue(
+                lastEvent.date().before(Calendar.getInstance().getTime())
+        );
     }
 
     private void deleteEvent() {
@@ -116,7 +119,7 @@ public class CreateEventTest {
 
     private void delay() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             L.e(e);
         }

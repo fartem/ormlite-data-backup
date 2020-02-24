@@ -14,7 +14,6 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
 
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,26 +58,21 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
+    public void onCreate(
+            SQLiteDatabase database,
+            ConnectionSource connectionSource
+    ) {
         try {
             createTables(connectionSource);
-            createDefaultEvents();
         } catch (SQLException e) {
             L.e(e);
         }
     }
 
-    private void createDefaultEvents() {
-        Event firstEvent = new Event(
-                context.getString(R.string.first_event_title),
-                context.getString(R.string.first_event_subtitle),
-                Calendar.getInstance().getTime()
-        );
-        saveEvent(firstEvent);
-    }
-
     @SuppressWarnings("unchecked")
-    private void createTables(ConnectionSource connectionSource) throws SQLException {
+    private void createTables(
+            ConnectionSource connectionSource
+    ) throws SQLException {
         for (Class clazz: DB_CLASSED) {
             TableUtils.createTable(connectionSource, clazz);
         }
@@ -136,7 +130,9 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
         return 0;
     }
 
-    public void execSQL(@NonNull String sql) throws SQLiteException {
+    public void execSQL(
+            @NonNull String sql
+    ) throws SQLiteException {
         getWritableDatabase().execSQL(sql);
     }
 

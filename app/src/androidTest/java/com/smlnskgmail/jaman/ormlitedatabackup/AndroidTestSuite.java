@@ -13,6 +13,4 @@ import org.junit.runners.Suite;
         CreateOrmLiteLocalBackupTaskTest.class,
         OrmLiteBackupCheckTest.class
 })
-public class AndroidTestSuite {
-
-}
+public class AndroidTestSuite { }
