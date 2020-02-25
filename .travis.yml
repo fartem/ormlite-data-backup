@@ -24,7 +24,7 @@ before_install:
 
 script:
   - ./gradlew build
-  - ./gradlew cpdCheck
+  - ./gradlew checkstyle
   - ./gradlew jacocoTestReport
   - ./gradlew assembleAndroidTest
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
