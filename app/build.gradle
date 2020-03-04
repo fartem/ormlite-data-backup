@@ -5,15 +5,15 @@ apply from: 'jacoco.gradle'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion '29.0.2'
     defaultConfig {
-        applicationId "com.smlnskgmail.jaman.ormlitedatabackup"
+        applicationId 'com.smlnskgmail.jaman.ormlitedatabackup'
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.4"
+        versionName '1.0.4'
 
-        testInstrumentationRunner "com.smlnskgmail.jaman.ormlitedatabackup.runner.AndroidJacocoTestRunner"
+        testInstrumentationRunner 'com.smlnskgmail.jaman.ormlitedatabackup.runner.AndroidJacocoTestRunner'
     }
     buildTypes {
         debug {
