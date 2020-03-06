@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.restore;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,25 +17,25 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
 
     @SuppressLint("StaticFieldLeak")
     private final Context context;
-    private final RestoreLocalBackupTarget restoreLocalBackupTarget;
+    private final RestoreLocalBackupTarget backupTarget;
 
     private final String backupPath;
 
     public RestoreOrmLiteLocalBackupTask(
             @NonNull Context context,
-            @NonNull RestoreLocalBackupTarget restoreLocalBackupTarget,
+            @NonNull RestoreLocalBackupTarget backupTarget,
             @NonNull String backupPath
     ) {
         this.context = context;
-        this.restoreLocalBackupTarget = restoreLocalBackupTarget;
+        this.backupTarget = backupTarget;
         this.backupPath = backupPath;
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     protected Boolean doInBackground(Void... voids) {
-        OrmLiteDatabaseParameters ormLiteDatabaseParameters = OrmLiteHelperFactory.databaseParameters();
-        String databasePath = ormLiteDatabaseParameters.databasePath();
+        OrmLiteDatabaseParameters parameters = OrmLiteHelperFactory.databaseParameters();
+        String databasePath = parameters.databasePath();
 
         boolean success = new FileCopy(
                 context,
@@ -48,7 +48,7 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
                     databasePath
             ).isValidDB();
             if (isValidDB) {
-                if (context.deleteDatabase(ormLiteDatabaseParameters.databaseName())) {
+                if (context.deleteDatabase(parameters.databaseName())) {
                     File originalDatabase = new File(databasePath);
                     // https://stackoverflow.com/questions/14651567/java-file-renameto
                     // -does-rename-file-but-returns-false-why
@@ -67,13 +67,7 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
 
     @Override
     protected void onPostExecute(Boolean result) {
-        restoreLocalBackupTarget.localBackupRestored(result);
-    }
-
-    public interface RestoreLocalBackupTarget {
-
-        void localBackupRestored(boolean success);
-
+        backupTarget.localBackupRestored(result);
     }
 
 }

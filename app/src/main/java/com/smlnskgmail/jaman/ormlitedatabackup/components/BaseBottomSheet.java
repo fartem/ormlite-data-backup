@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.bottomsheets;
+package com.smlnskgmail.jaman.ormlitedatabackup.components;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

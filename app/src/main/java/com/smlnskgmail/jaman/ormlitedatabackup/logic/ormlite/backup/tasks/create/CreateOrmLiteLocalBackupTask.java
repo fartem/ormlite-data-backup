@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks;
+package com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.create;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,22 +17,22 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
 
     @SuppressLint("StaticFieldLeak")
     private final Context context;
-    private final CreateLocalBackupTarget createLocalBackupTarget;
+    private final CreateLocalBackupTarget backupTarget;
 
     public CreateOrmLiteLocalBackupTask(
             @NonNull Context context,
-            @NonNull CreateLocalBackupTarget createLocalBackupTarget
+            @NonNull CreateLocalBackupTarget backupTarget
     ) {
         this.context = context;
-        this.createLocalBackupTarget = createLocalBackupTarget;
+        this.backupTarget = backupTarget;
     }
 
     @Override
     protected Boolean doInBackground(Void... voids) {
         checkpoint();
-        OrmLiteDatabaseParameters ormLiteDatabaseParameters = OrmLiteHelperFactory.databaseParameters();
-        String from = ormLiteDatabaseParameters.databasePath();
-        String to = new OrmLiteLocalBackupPath(ormLiteDatabaseParameters).pathAsString();
+        OrmLiteDatabaseParameters parameters = OrmLiteHelperFactory.databaseParameters();
+        String from = parameters.databasePath();
+        String to = new OrmLiteLocalBackupPath(parameters).pathAsString();
         return new FileCopy(
                 context,
                 from,
@@ -50,13 +50,7 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
 
     @Override
     protected void onPostExecute(Boolean result) {
-        createLocalBackupTarget.localBackupCreated(result);
-    }
-
-    public interface CreateLocalBackupTarget {
-
-        void localBackupCreated(boolean result);
-
+        backupTarget.localBackupCreated(result);
     }
 
 }

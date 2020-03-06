@@ -29,10 +29,10 @@ public class OrmLiteBackupCheck {
                 databasePath,
                 null,
                 SQLiteDatabase.OPEN_READONLY
-        ); OrmLiteSqliteOpenHelper openHelper = new OrmLiteDatabaseHelper(context, databasePath)) {
+        ); OrmLiteSqliteOpenHelper helper = new OrmLiteDatabaseHelper(context, databasePath)) {
             int version = sqLiteDatabase.getVersion();
             for (Class clazz : OrmLiteDatabaseHelper.DB_CLASSED) {
-                Dao dao = openHelper.getDao(clazz);
+                Dao dao = helper.getDao(clazz);
                 dao.countOf();
             }
             return true;

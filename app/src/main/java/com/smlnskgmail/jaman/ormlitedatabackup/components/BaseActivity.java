@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.activities;
+package com.smlnskgmail.jaman.ormlitedatabackup.components;
 
 import android.os.Bundle;
 

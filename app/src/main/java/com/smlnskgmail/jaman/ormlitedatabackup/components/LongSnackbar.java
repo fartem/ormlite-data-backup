@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.components.snackbars;
+package com.smlnskgmail.jaman.ormlitedatabackup.components;
 
 import android.view.View;
 

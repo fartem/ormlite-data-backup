@@ -8,14 +8,14 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabasePara
 
 public class OrmLiteLocalBackupPath {
 
-    private final OrmLiteDatabaseParameters ormLiteDatabaseParameters;
+    private final OrmLiteDatabaseParameters parameters;
 
-    public OrmLiteLocalBackupPath(@NonNull OrmLiteDatabaseParameters ormLiteDatabaseParameters) {
-        this.ormLiteDatabaseParameters = ormLiteDatabaseParameters;
+    public OrmLiteLocalBackupPath(@NonNull OrmLiteDatabaseParameters parameters) {
+        this.parameters = parameters;
     }
 
     public String pathAsString() {
-        String databaseName = ormLiteDatabaseParameters.databaseName();
+        String databaseName = parameters.databaseName();
         String backupFileName = databaseName.substring(0, databaseName.indexOf(".")) + ".backup";
         return Environment.getExternalStorageDirectory() + "/OrmLiteDataBackup/" + backupFileName;
     }
