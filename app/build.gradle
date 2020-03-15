@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName '1.0.5'
+        versionName '1.1.0'
 
         testInstrumentationRunner 'com.smlnskgmail.jaman.ormlitedatabackup.runner.AndroidJacocoTestRunner'
     }
@@ -38,7 +38,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     // AdaptiveRecyclerView
-    implementation 'com.smlnskgmail.jaman:adaptiverecyclerview:0.1.0'
+    implementation 'com.smlnskgmail.jaman:adaptiverecyclerview:0.1.2'
 
     // ORMLite
     implementation 'com.j256.ormlite:ormlite-core:5.1'

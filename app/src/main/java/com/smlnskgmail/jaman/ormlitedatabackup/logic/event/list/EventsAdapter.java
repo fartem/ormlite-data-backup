@@ -12,7 +12,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 
 import java.util.List;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventHolder> implements EventHolder.EventDeleteTarget {
+public class EventsAdapter extends RecyclerView.Adapter<EventHolder> implements EventDeleteTarget {
 
     private final List<Event> events;
 
@@ -22,17 +22,25 @@ public class EventsAdapter extends RecyclerView.Adapter<EventHolder> implements 
 
     @NonNull
     @Override
-    public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventHolder onCreateViewHolder(
+            @NonNull ViewGroup parent,
+            int viewType
+    ) {
         return new EventHolder(LayoutInflater.from(parent.getContext())
                 .inflate(
                         R.layout.item_event,
                         parent,
                         false
-                ), this);
+                ),
+                this
+        );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventHolder holder, int position) {
+    public void onBindViewHolder(
+            @NonNull EventHolder holder,
+            int position
+    ) {
         holder.bind(events.get(position));
     }
 

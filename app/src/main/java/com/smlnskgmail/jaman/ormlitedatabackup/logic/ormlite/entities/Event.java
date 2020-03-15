@@ -69,14 +69,18 @@ public class Event extends EntityWithId {
             return false;
         }
         Event event = (Event) o;
-        return title.equals(event.title)
-                && subtitle.equals(event.subtitle)
-                && date.equals(event.date);
+        return Objects.equals(title, event.title)
+                && Objects.equals(subtitle, event.subtitle)
+                && Objects.equals(date, event.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, subtitle, date);
+        return Objects.hash(
+                title,
+                subtitle,
+                date
+        );
     }
 
 }

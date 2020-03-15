@@ -48,8 +48,9 @@ public class CreateOrmLiteLocalBackupTaskTest {
 
     @Test
     public void createLocalBackup() throws InterruptedException {
-        CreateOrmLiteLocalBackupTask createOrmLiteLocalBackupTask = new CreateOrmLiteLocalBackupTask(
-                context,
+        CreateOrmLiteLocalBackupTask createOrmLiteLocalBackupTask
+                = new CreateOrmLiteLocalBackupTask(
+                        context,
                 result -> countDownLatch.countDown()
         );
         createOrmLiteLocalBackupTask.execute();
@@ -60,8 +61,9 @@ public class CreateOrmLiteLocalBackupTaskTest {
     }
 
     private File localBackupFile() {
-        OrmLiteLocalBackupPath ormLiteLocalBackupPath = new OrmLiteLocalBackupPath(
-                OrmLiteHelperFactory.databaseParameters()
+        OrmLiteLocalBackupPath ormLiteLocalBackupPath
+                = new OrmLiteLocalBackupPath(
+                        OrmLiteHelperFactory.databaseParameters()
         );
         return new File(ormLiteLocalBackupPath.pathAsString());
     }

@@ -11,7 +11,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabasePara
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.FileCopy;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
 
 public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -30,7 +30,8 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
     @Override
     protected Boolean doInBackground(Void... voids) {
         checkpoint();
-        OrmLiteDatabaseParameters parameters = OrmLiteHelperFactory.databaseParameters();
+        OrmLiteDatabaseParameters parameters
+                = OrmLiteHelperFactory.databaseParameters();
         String from = parameters.databasePath();
         String to = new OrmLiteLocalBackupPath(parameters).pathAsString();
         return new FileCopy(

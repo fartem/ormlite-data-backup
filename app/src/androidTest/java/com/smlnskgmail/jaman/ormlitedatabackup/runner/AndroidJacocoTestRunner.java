@@ -1,13 +1,12 @@
 package com.smlnskgmail.jaman.ormlitedatabackup.runner;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.test.runner.AndroidJUnitRunner;
 
-import java.io.IOException;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
+
 import java.lang.reflect.Method;
-import java.nio.charset.Charset;
 
 public class AndroidJacocoTestRunner extends AndroidJUnitRunner {
 
@@ -15,6 +14,8 @@ public class AndroidJacocoTestRunner extends AndroidJUnitRunner {
     public void finish(int resultCode, Bundle results) {
         try {
             Class rt = Class.forName("org.jacoco.agent.rt.RT");
+
+            @SuppressWarnings("unchecked")
             Method getAgent = rt.getMethod("getAgent");
             Method dump = getAgent.getReturnType().getMethod(
                     "dump",
@@ -23,16 +24,7 @@ public class AndroidJacocoTestRunner extends AndroidJUnitRunner {
             Object agent = getAgent.invoke(null);
             dump.invoke(agent, false);
         } catch (Throwable e) {
-            final String trace = Log.getStackTraceString(e);
-            try {
-                System.out.write(
-                        trace.getBytes(
-                                Charset.forName("UTF-8")
-                        )
-                );
-            } catch (IOException ignored) {
-
-            }
+            L.e(e);
         }
         super.finish(resultCode, results);
     }

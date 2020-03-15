@@ -34,25 +34,26 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     protected Boolean doInBackground(Void... voids) {
-        OrmLiteDatabaseParameters parameters = OrmLiteHelperFactory.databaseParameters();
-        String databasePath = parameters.databasePath();
+        OrmLiteDatabaseParameters parameters
+                = OrmLiteHelperFactory.databaseParameters();
+        String tempDatabase = parameters.databaseFolder() + "/temp.db";
 
         boolean success = new FileCopy(
                 context,
                 backupPath,
-                databasePath
+                tempDatabase
         ).copy();
         if (success) {
             boolean isValidDB = new OrmLiteBackupCheck(
                     context,
-                    databasePath
+                    tempDatabase
             ).isValidDB();
             if (isValidDB) {
                 if (context.deleteDatabase(parameters.databaseName())) {
-                    File originalDatabase = new File(databasePath);
-                    // https://stackoverflow.com/questions/14651567/java-file-renameto
+                    File originalDatabase = new File(parameters.databasePath());
+                    // https:/d/stackoverflow.com/questions/14651567/java-file-renameto
                     // -does-rename-file-but-returns-false-why
-                    new File(databasePath).renameTo(originalDatabase);
+                    new File(tempDatabase).renameTo(originalDatabase);
                     return true;
                 } else {
                     return false;

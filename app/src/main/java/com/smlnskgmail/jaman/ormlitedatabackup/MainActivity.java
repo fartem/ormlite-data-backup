@@ -28,11 +28,12 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import jahirfiquitiva.libs.fabsmenu.FABsMenu;
 
 public class MainActivity extends BaseActivity implements EventCreateTarget {
+
+    private static final String CURRENT_FRAGMENT_TAG = "CURRENT_FRAGMENT_TAG";
 
     private static final int REQUEST_CODE_STORAGE = 101;
 
@@ -56,15 +57,15 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
 
         setClickToFABTitle(R.id.create_event, view -> {
             hideFab();
-            CreateEventBottomSheet createEventBottomSheet = new CreateEventBottomSheet();
-            createEventBottomSheet.show(
+            new CreateEventBottomSheet().show(
                     getSupportFragmentManager(),
-                    createEventBottomSheet.getClass().getName()
+                    CURRENT_FRAGMENT_TAG
             );
         });
         setClickToFABTitle(R.id.create_local_backup, view -> {
             hideFab();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
                 new CreateOrmLiteLocalBackupTask(
@@ -80,14 +81,18 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
         });
         setClickToFABTitle(R.id.restore_local_backup, view -> {
             hideFab();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isStoragePermissionGranted()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && !isStoragePermissionGranted()) {
                 requestStoragePermission();
             } else {
                 new RestoreOrmLiteLocalBackupTask(
                         MainActivity.this,
                         success -> ProcessPhoenix.triggerRebirth(
                                 this,
-                                new Intent(this, MainActivity.class)
+                                new Intent(
+                                        this,
+                                        MainActivity.class
+                                )
                         ),
                         localDatabasePath()
                 ).execute();
@@ -96,7 +101,8 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
     }
 
     private String localDatabasePath() {
-        OrmLiteDatabaseParameters parameters = OrmLiteHelperFactory.databaseParameters();
+        OrmLiteDatabaseParameters parameters
+                = OrmLiteHelperFactory.databaseParameters();
         return new OrmLiteLocalBackupPath(parameters).pathAsString();
     }
 
@@ -113,8 +119,10 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean isStoragePermissionGranted() {
-        return ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -139,7 +147,8 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
         );
         if (requestCode == REQUEST_CODE_STORAGE) {
             int snackbarMessageResId;
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 snackbarMessageResId = R.string.request_storage_permission_status_granted;
             } else {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -164,8 +173,7 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
         OrmLiteHelperFactory.databaseHelper().saveEvent(event);
         events.add(event);
 
-        Objects.requireNonNull(eventsList.getAdapter())
-                .notifyItemInserted(events.size() - 1);
+        eventsList.getAdapter().notifyItemInserted(events.size() - 1);
     }
 
     private void loadEvents() {

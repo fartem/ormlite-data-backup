@@ -44,7 +44,9 @@ public class OrmLiteBackupCheckTest {
     private void copyBackupFileToAppFolder(boolean isValid) throws IOException {
         String backupFolder = isValid ? "valid" : "invalid";
         InputStream backupFile = context.getResources().getAssets().open(
-                "backups/" + backupFolder + "/ormlite.backup"
+                "backups/"
+                        + backupFolder
+                        + "/ormlite.backup"
         );
 
         new FileCopy(

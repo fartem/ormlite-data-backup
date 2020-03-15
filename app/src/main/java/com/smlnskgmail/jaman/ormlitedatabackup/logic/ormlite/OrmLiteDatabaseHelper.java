@@ -11,7 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
 
 import java.sql.SQLException;
 import java.util.Collections;

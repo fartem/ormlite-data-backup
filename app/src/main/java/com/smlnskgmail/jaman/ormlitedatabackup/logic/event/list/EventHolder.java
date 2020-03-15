@@ -19,13 +19,16 @@ public class EventHolder extends RecyclerView.ViewHolder {
 
     private final EventDeleteTarget eventDeleteTarget;
 
-    EventHolder(@NonNull View itemView, @NonNull EventDeleteTarget eventDeleteTarget) {
+    EventHolder(
+            @NonNull View itemView,
+            @NonNull EventDeleteTarget eventDeleteTarget
+    ) {
         super(itemView);
+        this.eventDeleteTarget = eventDeleteTarget;
+
         title = itemView.findViewById(R.id.event_title);
         subtitle = itemView.findViewById(R.id.event_subtitle);
         delete = itemView.findViewById(R.id.event_delete);
-
-        this.eventDeleteTarget = eventDeleteTarget;
     }
 
     void bind(@NonNull Event event) {
@@ -33,12 +36,6 @@ public class EventHolder extends RecyclerView.ViewHolder {
         subtitle.setText(event.subtitle());
 
         delete.setOnClickListener(view -> eventDeleteTarget.eventDeleted(event));
-    }
-
-    public interface EventDeleteTarget {
-
-        void eventDeleted(@NonNull Event event);
-
     }
 
 }

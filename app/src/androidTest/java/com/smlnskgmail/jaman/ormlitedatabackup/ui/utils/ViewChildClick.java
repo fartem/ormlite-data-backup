@@ -22,7 +22,10 @@ public class ViewChildClick {
             }
 
             @Override
-            public void perform(UiController uiController, View view) {
+            public void perform(
+                    UiController uiController,
+                    View view
+            ) {
                 View v = view.findViewById(id);
                 v.performClick();
             }

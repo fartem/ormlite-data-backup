@@ -25,4 +25,8 @@ public class OrmLiteDatabaseParameters {
         return context.getDatabasePath(databaseName).getPath();
     }
 
+    public String databaseFolder() {
+        return context.getDatabasePath(databaseName).getParent();
+    }
+
 }

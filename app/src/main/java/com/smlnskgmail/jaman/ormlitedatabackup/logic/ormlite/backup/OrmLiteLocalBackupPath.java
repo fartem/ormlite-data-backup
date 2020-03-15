@@ -16,8 +16,13 @@ public class OrmLiteLocalBackupPath {
 
     public String pathAsString() {
         String databaseName = parameters.databaseName();
-        String backupFileName = databaseName.substring(0, databaseName.indexOf(".")) + ".backup";
-        return Environment.getExternalStorageDirectory() + "/OrmLiteDataBackup/" + backupFileName;
+        String backupFileName = databaseName.substring(
+                0,
+                databaseName.indexOf(".")
+        ) + ".backup";
+        return Environment.getExternalStorageDirectory()
+                + "/OrmLiteDataBackup/"
+                + backupFileName;
     }
 
 }

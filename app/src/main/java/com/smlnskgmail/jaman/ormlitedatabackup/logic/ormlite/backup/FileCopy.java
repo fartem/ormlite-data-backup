@@ -5,7 +5,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,7 +49,9 @@ public class FileCopy {
         try {
             inputStream = fromAsStream != null
                     ? fromAsStream
-                    : context.getContentResolver().openInputStream(Uri.fromFile(new File(from))
+                    : context.getContentResolver().openInputStream(
+                            Uri.fromFile(new File(from)
+                    )
             );
             File toFile = new File(to);
             if (toFile.exists()) {
@@ -65,9 +67,12 @@ public class FileCopy {
             byte[] buffer = new byte[1024];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
-                outputStream.write(buffer, 0, length);
+                outputStream.write(
+                        buffer,
+                        0,
+                        length
+                );
             }
-
             outputStream.flush();
             return true;
         } catch (Exception e) {

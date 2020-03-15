@@ -8,7 +8,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.MainActivity;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
-import com.smlnskgmail.jaman.ormlitedatabackup.tools.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
 import com.smlnskgmail.jaman.ormlitedatabackup.ui.utils.ViewChildClick;
 
 import org.junit.Before;
