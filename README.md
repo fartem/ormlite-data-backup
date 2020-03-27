@@ -5,6 +5,7 @@ OrmLite Data Backup
 
 [![Travis CI](https://img.shields.io/travis/fartem/ormlite-data-backup)](https://travis-ci.org/fartem/ormlite-data-backup)
 [![Codecov](https://img.shields.io/codecov/c/github/fartem/ormlite-data-backup)](https://codecov.io/gh/fartem/ormlite-data-backup)
+[![Hits-of-Code](https://hitsofcode.com/github/fartem/ormlite-data-backup)](https://hitsofcode.com/view/github/fartem/ormlite-data-backup)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-OrmLite%20Data%20backup-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/7940)
 
 About
