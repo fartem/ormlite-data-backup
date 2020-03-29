@@ -61,9 +61,8 @@ public class CreateOrmLiteLocalBackupTaskTest {
     }
 
     private File localBackupFile() {
-        OrmLiteLocalBackupPath ormLiteLocalBackupPath
-                = new OrmLiteLocalBackupPath(
-                        OrmLiteHelperFactory.databaseParameters()
+        OrmLiteLocalBackupPath ormLiteLocalBackupPath = new OrmLiteLocalBackupPath(
+                OrmLiteHelperFactory.databaseParameters()
         );
         return new File(ormLiteLocalBackupPath.pathAsString());
     }

@@ -8,7 +8,7 @@ abstract class EntityWithId {
     @DatabaseField(generatedId = true)
     private long id;
 
-    public EntityWithId(long id) {
+    EntityWithId(long id) {
         this.id = id;
     }
 
