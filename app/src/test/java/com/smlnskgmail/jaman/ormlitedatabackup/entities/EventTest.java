@@ -64,6 +64,15 @@ public class EventTest {
                 firstEvent.hashCode(),
                 secondEvent.hashCode()
         );
+
+        assertNotEquals(
+                firstEvent,
+                new Date()
+        );
+        assertNotEquals(
+                firstEvent,
+                null
+        );
     }
 
 }
