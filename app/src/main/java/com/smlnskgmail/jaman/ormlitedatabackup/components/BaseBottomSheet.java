@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.smlnskgmail.jaman.ormlitedatabackup.R;
 
 public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
 
@@ -38,5 +39,10 @@ public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
     }
 
     protected abstract int layoutResId();
+
+    @Override
+    public int getTheme() {
+        return R.style.AppBottomSheetStyle;
+    }
 
 }
