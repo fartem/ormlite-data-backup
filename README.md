@@ -12,13 +12,7 @@ OrmLite Data Backup
 About
 -------------
 
-Demo app for demonstration a way of backup user data.
-
-Features
--------------
-
-* create local (on running device) backup;
-* restore local backup.
+Demo app for demonstrating a way of backup user data.
 
 Downloads
 -------------
