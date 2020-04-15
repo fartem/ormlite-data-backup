@@ -37,7 +37,7 @@ Read [Commit Convention](https://github.com/fartem/repository-rules/blob/master/
 ```shell
 gradlew clean
 gradlew build
-gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.ormlitedatabackup.AndroidTestSuite connectedCheck
+gradlew connectedCheck
 ```
 
 If you don't see any error messages, submit your pull request.
