@@ -10,7 +10,9 @@ public class OrmLiteLocalBackupPath {
 
     private final OrmLiteDatabaseParameters parameters;
 
-    public OrmLiteLocalBackupPath(@NonNull OrmLiteDatabaseParameters parameters) {
+    public OrmLiteLocalBackupPath(
+            @NonNull OrmLiteDatabaseParameters parameters
+    ) {
         this.parameters = parameters;
     }
 

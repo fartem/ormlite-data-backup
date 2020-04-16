@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.ormlitedatabackup.logic.support;
+package com.smlnskgmail.jaman.ormlitedatabackup.support;
 
 import android.util.Log;
 

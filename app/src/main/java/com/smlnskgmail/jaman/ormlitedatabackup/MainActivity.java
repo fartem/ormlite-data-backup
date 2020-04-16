@@ -128,7 +128,7 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestStoragePermission() {
         requestPermissions(
-                new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                 REQUEST_CODE_STORAGE
         );
     }

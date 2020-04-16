@@ -5,7 +5,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.support.L;
 
 import java.io.File;
 import java.io.FileOutputStream;

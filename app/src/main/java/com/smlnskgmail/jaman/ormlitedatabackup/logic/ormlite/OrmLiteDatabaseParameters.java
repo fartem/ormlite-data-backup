@@ -9,7 +9,7 @@ public class OrmLiteDatabaseParameters {
     private final Context context;
     private final String databaseName;
 
-    public OrmLiteDatabaseParameters(
+    OrmLiteDatabaseParameters(
             @NonNull Context context,
             @NonNull String databaseName
     ) {

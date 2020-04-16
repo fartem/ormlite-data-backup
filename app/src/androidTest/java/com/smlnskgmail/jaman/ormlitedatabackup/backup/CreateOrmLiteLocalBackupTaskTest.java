@@ -54,8 +54,8 @@ public class CreateOrmLiteLocalBackupTaskTest {
         CreateOrmLiteLocalBackupTask createOrmLiteLocalBackupTask
                 = new CreateOrmLiteLocalBackupTask(
                         context,
-                result -> countDownLatch.countDown()
-        );
+                        result -> countDownLatch.countDown()
+                );
         createOrmLiteLocalBackupTask.execute();
         countDownLatch.await();
 

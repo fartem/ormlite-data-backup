@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.smlnskgmail.jaman.ormlitedatabackup.R;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 
-public class EventHolder extends RecyclerView.ViewHolder {
+class EventHolder extends RecyclerView.ViewHolder {
 
     private final TextView title;
     private final TextView subtitle;

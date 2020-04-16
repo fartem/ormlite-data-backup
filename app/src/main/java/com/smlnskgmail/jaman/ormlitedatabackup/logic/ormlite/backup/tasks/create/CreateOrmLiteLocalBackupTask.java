@@ -11,7 +11,7 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabasePara
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.FileCopy;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.support.L;
 
 public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean> {
 

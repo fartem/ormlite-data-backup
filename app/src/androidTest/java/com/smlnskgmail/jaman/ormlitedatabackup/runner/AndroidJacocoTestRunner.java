@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.test.runner.AndroidJUnitRunner;
 
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.support.L;
 
 import java.lang.reflect.Method;
 

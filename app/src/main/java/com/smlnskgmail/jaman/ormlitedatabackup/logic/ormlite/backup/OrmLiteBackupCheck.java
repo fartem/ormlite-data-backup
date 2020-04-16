@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseHelper;
-import com.smlnskgmail.jaman.ormlitedatabackup.logic.support.L;
+import com.smlnskgmail.jaman.ormlitedatabackup.support.L;
 
 public class OrmLiteBackupCheck {
 
