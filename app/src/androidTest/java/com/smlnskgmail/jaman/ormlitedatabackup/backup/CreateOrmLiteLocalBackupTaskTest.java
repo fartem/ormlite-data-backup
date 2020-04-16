@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteLocalBackupPath;
@@ -13,12 +14,14 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.tasks.create
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.util.concurrent.CountDownLatch;
 
 import static org.junit.Assert.assertTrue;
 
+@RunWith(AndroidJUnit4.class)
 public class CreateOrmLiteLocalBackupTaskTest {
 
     private final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();

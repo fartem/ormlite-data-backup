@@ -3,6 +3,7 @@ package com.smlnskgmail.jaman.ormlitedatabackup.backup;
 import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteDatabaseParameters;
 import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.OrmLiteHelperFactory;
@@ -11,12 +12,14 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.backup.OrmLiteBacku
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(AndroidJUnit4.class)
 public class OrmLiteBackupCheckTest {
 
     private final Context context = InstrumentationRegistry.getInstrumentation().getContext();
@@ -30,13 +33,13 @@ public class OrmLiteBackupCheckTest {
     }
 
     @Test
-    public void checkValidDB() throws IOException {
+    public void checkValidDb() throws IOException {
         copyBackupFileToAppFolder(true);
         tryRestoreBackup(true);
     }
 
     @Test
-    public void checkInvalidDB() throws IOException {
+    public void checkInvalidDb() throws IOException {
         copyBackupFileToAppFolder(false);
         tryRestoreBackup(false);
     }

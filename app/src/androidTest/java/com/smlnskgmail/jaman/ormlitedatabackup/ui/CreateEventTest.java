@@ -22,7 +22,7 @@ import java.util.List;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -38,7 +38,7 @@ public class CreateEventTest {
     private final String eventTitle = "Test title";
     private final String eventSubtitle = "Test subtitle";
 
-    private long eventsAtStart = 0;
+    private long eventsAtStart;
 
     @Before
     public void saveEventsCount() {
@@ -62,14 +62,14 @@ public class CreateEventTest {
 
         onView(withId(R.id.new_event_title))
                 .perform(
-                        typeText(eventTitle),
+                        replaceText(eventTitle),
                         closeSoftKeyboard()
                 );
         delay();
 
         onView(withId(R.id.new_event_subtitle))
                 .perform(
-                        typeText(eventSubtitle),
+                        replaceText(eventSubtitle),
                         closeSoftKeyboard()
                 );
         delay();
@@ -88,7 +88,6 @@ public class CreateEventTest {
                 eventTitle,
                 lastEvent.title()
         );
-
         assertEquals(
                 eventSubtitle,
                 lastEvent.subtitle()

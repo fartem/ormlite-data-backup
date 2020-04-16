@@ -23,15 +23,14 @@ before_install:
   - chmod +x gradlew
 
 script:
+  - ./gradlew clean
   - ./gradlew build
-  - ./gradlew jacocoTestReport
-  - ./gradlew assembleAndroidTest
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
   - adb logcat &
-  - ./gradlew connectedCheck
+  - ./gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.ormlitedatabackup.AndroidTestSuite connectedCheck
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
