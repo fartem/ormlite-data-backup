@@ -30,6 +30,12 @@ android {
     testOptions {
         animationsDisabled = true
     }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def versionName = android.defaultConfig.versionName
+            output.outputFileName = "ormlite-data-backup_${versionName}"
+        }
+    }
 }
 
 dependencies {
