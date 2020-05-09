@@ -35,7 +35,7 @@ android {
         variant.outputs.each { output ->
             def versionName = android.defaultConfig.versionName
             def buildTypeName = variant.buildType.name
-            output.outputFileName = "ormlite-data-backup-${buildTypeName}_${versionName}"
+            output.outputFileName = "ormlite-data-backup-${buildTypeName}_${versionName}.apk"
         }
     }
 }
