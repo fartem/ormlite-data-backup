@@ -4,9 +4,10 @@
     <color name="colorPrimaryDark">#00897B</color>
     <color name="colorAccent">#FFA726</color>
 
+    <color name="colorLauncherBackground">#FFA726</color>
+
     <!-- common -->
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorLauncherBackground">#00897B</color>
 
     <!-- text -->
     <color name="colorPrimaryText">#212121</color>
