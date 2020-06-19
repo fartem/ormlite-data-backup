@@ -13,7 +13,7 @@ About
 
 Demo app for demonstrating a way of backup user data.
 
-Downloads
+Download
 -------------
 
 <img src="media/qrcodes/github_download.png" height="150px" />
