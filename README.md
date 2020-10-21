@@ -11,10 +11,6 @@
 
 Demo app for demonstrating a way of backup user data.
 
-## Download
-
-<img src="media/qrcodes/github_download.png" height="150px" />
-
 ## Screenshots
 
 <p align="center">
@@ -23,6 +19,10 @@ Demo app for demonstrating a way of backup user data.
   <img src="media/screenshots/screenshot_03.png" width="190" />
   <img src="media/screenshots/screenshot_04.png" width="190" />
 </p>
+
+## Download
+
+<img src="media/qrcodes/github_download.png" height="150px" />
 
 ## How to contribute
 
