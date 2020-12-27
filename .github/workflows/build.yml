@@ -52,9 +52,9 @@ jobs:
       - name: Run Instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          # Test on API 22 because the app needs storage access runtime permission on API 23+
-          api-level: 22
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -partition-size 100
+          # Test on API 21 because the app needs storage access runtime permission on API 23+
+          api-level: 21
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: ./gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.ormlitedatabackup.AndroidTestSuite connectedCheck --stacktrace
 
       - name: Send JaCoCo coverage report to Codecov
