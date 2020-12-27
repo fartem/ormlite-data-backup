@@ -54,6 +54,7 @@ jobs:
         with:
           # Test on API 21 because the app needs storage access runtime permission on API 23+
           api-level: 21
+          sdcard-path-or-size: 100M
           script: ./gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.ormlitedatabackup.AndroidTestSuite connectedCheck --stacktrace
 
       - name: Send JaCoCo coverage report to Codecov
