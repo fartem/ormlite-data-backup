@@ -58,6 +58,10 @@ dependencies {
     // ProcessPhoenix
     implementation 'com.jakewharton:process-phoenix:2.0.0'
 
+    // Checkstyle
+    checkstyle 'com.github.fartem:checkstyle-checks-java:master'
+    checkstyle 'com.github.fartem:checkstyle-checks-android:master'
+
     // Unit tests
     testImplementation 'junit:junit:4.13'
 
