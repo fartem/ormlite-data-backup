@@ -67,8 +67,8 @@ app/release/
 app/debug/
 
 # Checkstyle
-checkstyle-result.xml
+checkstyle.xml
+checkstyle-report.xml
 
 # detekt
 detekt-config.yml
-
