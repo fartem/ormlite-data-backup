@@ -22,7 +22,7 @@ public abstract class BaseBottomSheet extends BottomSheetDialogFragment {
         init(view);
     }
 
-    protected abstract void init(View view);
+    protected abstract void init(@NonNull View view);
 
     @Nullable
     @Override

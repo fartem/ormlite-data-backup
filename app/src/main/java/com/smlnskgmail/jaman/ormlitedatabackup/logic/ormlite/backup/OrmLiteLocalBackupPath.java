@@ -16,6 +16,7 @@ public class OrmLiteLocalBackupPath {
         this.parameters = parameters;
     }
 
+    @NonNull
     public String pathAsString() {
         String databaseName = parameters.databaseName();
         String backupFileName = databaseName.substring(

@@ -17,9 +17,8 @@ import java.util.Date;
 public class CreateEventBottomSheet extends BaseBottomSheet {
 
     @Override
-    public void init(View view) {
+    public void init(@NonNull View view) {
         Date now = Calendar.getInstance().getTime();
-
         applyTextTo(
                 view.findViewById(R.id.new_event_date),
                 formatDate(now, DateFormat.MEDIUM)

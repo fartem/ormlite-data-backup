@@ -17,14 +17,17 @@ public class OrmLiteDatabaseParameters {
         this.databaseName = databaseName;
     }
 
+    @NonNull
     public String databaseName() {
         return databaseName;
     }
 
+    @NonNull
     public String databasePath() {
         return context.getDatabasePath(databaseName).getPath();
     }
 
+    @NonNull
     public String databaseFolder() {
         return context.getDatabasePath(databaseName).getParent();
     }

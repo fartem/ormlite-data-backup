@@ -27,8 +27,9 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
         this.backupTarget = backupTarget;
     }
 
+    @NonNull
     @Override
-    protected Boolean doInBackground(Void... voids) {
+    protected Boolean doInBackground(@NonNull Void... voids) {
         checkpoint();
         OrmLiteDatabaseParameters parameters
                 = OrmLiteHelperFactory.databaseParameters();
@@ -50,7 +51,7 @@ public class CreateOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean>
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(@NonNull Boolean result) {
         backupTarget.localBackupCreated(result);
     }
 

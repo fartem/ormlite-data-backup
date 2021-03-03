@@ -39,8 +39,8 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
 
     private final List<Event> events = new ArrayList<>();
 
-    private AdaptiveRecyclerView eventsList;
-    private FABsMenu menuFAB;
+    private AdaptiveRecyclerView arvEventsList;
+    private FABsMenu fabMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,10 +50,10 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
     }
 
     private void initViews() {
-        eventsList = findViewById(R.id.events_list);
-        eventsList.setMessageView(findViewById(R.id.events_list_message_view));
+        arvEventsList = findViewById(R.id.events_list);
+        arvEventsList.setMessageView(findViewById(R.id.events_list_message_view));
 
-        menuFAB = findViewById(R.id.main_fab_menu);
+        fabMenu = findViewById(R.id.main_fab_menu);
 
         setClickToFABTitle(R.id.create_event, view -> {
             hideFab();
@@ -100,6 +100,7 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
         });
     }
 
+    @NonNull
     private String localDatabasePath() {
         OrmLiteDatabaseParameters parameters
                 = OrmLiteHelperFactory.databaseParameters();
@@ -108,13 +109,13 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
 
     private void setClickToFABTitle(
             int resId,
-            View.OnClickListener clickListener
+            @NonNull View.OnClickListener clickListener
     ) {
         findViewById(resId).setOnClickListener(clickListener);
     }
 
     private void hideFab() {
-        menuFAB.collapse();
+        fabMenu.collapse();
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
@@ -173,12 +174,12 @@ public class MainActivity extends BaseActivity implements EventCreateTarget {
         OrmLiteHelperFactory.databaseHelper().saveEvent(event);
         events.add(event);
 
-        eventsList.getAdapter().notifyItemInserted(events.size() - 1);
+        arvEventsList.getAdapter().notifyItemInserted(events.size() - 1);
     }
 
     private void loadEvents() {
         events.addAll(OrmLiteHelperFactory.databaseHelper().allEvents());
-        eventsList.setAdapter(new EventsAdapter(events));
+        arvEventsList.setAdapter(new EventsAdapter(events));
     }
 
     @Override

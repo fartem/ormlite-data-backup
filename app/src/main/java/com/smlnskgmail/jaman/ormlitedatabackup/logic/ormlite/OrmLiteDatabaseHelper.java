@@ -59,8 +59,8 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onCreate(
-            SQLiteDatabase database,
-            ConnectionSource connectionSource
+            @NonNull SQLiteDatabase database,
+            @NonNull ConnectionSource connectionSource
     ) {
         try {
             createTables(connectionSource);
@@ -71,7 +71,7 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @SuppressWarnings("unchecked")
     private void createTables(
-            ConnectionSource connectionSource
+            @NonNull ConnectionSource connectionSource
     ) throws SQLException {
         for (Class clazz: DB_CLASSED) {
             TableUtils.createTable(connectionSource, clazz);
@@ -80,22 +80,25 @@ public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(
-            SQLiteDatabase database,
-            ConnectionSource connectionSource,
+            @NonNull SQLiteDatabase database,
+            @NonNull ConnectionSource connectionSource,
             int oldVersion,
             int newVersion
     ) {
 
     }
 
+    @NonNull
     String databaseName() {
         return DATABASE_NAME;
     }
 
+    @NonNull
     Context context() {
         return context;
     }
 
+    @NonNull
     public List<Event> allEvents() {
         try {
             return getDao(Event.class).queryForAll();

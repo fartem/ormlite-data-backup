@@ -12,10 +12,10 @@ import com.smlnskgmail.jaman.ormlitedatabackup.logic.ormlite.entities.Event;
 
 class EventHolder extends RecyclerView.ViewHolder {
 
-    private final TextView title;
-    private final TextView subtitle;
+    private final TextView tvTitle;
+    private final TextView tvSubtitle;
 
-    private final ImageView delete;
+    private final ImageView ivDelete;
 
     private final EventDeleteTarget eventDeleteTarget;
 
@@ -26,16 +26,16 @@ class EventHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.eventDeleteTarget = eventDeleteTarget;
 
-        title = itemView.findViewById(R.id.event_title);
-        subtitle = itemView.findViewById(R.id.event_subtitle);
-        delete = itemView.findViewById(R.id.event_delete);
+        tvTitle = itemView.findViewById(R.id.event_title);
+        tvSubtitle = itemView.findViewById(R.id.event_subtitle);
+        ivDelete = itemView.findViewById(R.id.event_delete);
     }
 
     void bind(@NonNull Event event) {
-        title.setText(event.title());
-        subtitle.setText(event.subtitle());
+        tvTitle.setText(event.title());
+        tvSubtitle.setText(event.subtitle());
 
-        delete.setOnClickListener(view -> eventDeleteTarget.eventDeleted(event));
+        ivDelete.setOnClickListener(view -> eventDeleteTarget.eventDeleted(event));
     }
 
 }

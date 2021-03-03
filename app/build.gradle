@@ -41,8 +41,8 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     // AdaptiveRecyclerView
@@ -59,16 +59,16 @@ dependencies {
     implementation 'com.jakewharton:process-phoenix:2.0.0'
 
     // Checkstyle
-    checkstyle 'com.github.fartem:checkstyle-checks-java:master'
-    checkstyle 'com.github.fartem:checkstyle-checks-android:master'
+    checkstyle 'com.github.fartem:checkstyle-checks-java:1.1.0'
+    checkstyle 'com.github.fartem:checkstyle-checks-android:1.1.0'
 
     // Unit tests
     testImplementation 'junit:junit:4.13'
 
     // Android tests
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'androidx.test:core:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+    androidTestImplementation 'androidx.test:core:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
 }

@@ -30,6 +30,7 @@ public class OrmLiteHelperFactory {
         );
     }
 
+    @NonNull
     public static OrmLiteDatabaseHelper databaseHelper() {
         return databaseHelper;
     }
@@ -39,6 +40,7 @@ public class OrmLiteHelperFactory {
         databaseHelper = null;
     }
 
+    @NonNull
     public static OrmLiteDatabaseParameters databaseParameters() {
         if (databaseParameters == null) {
             String databaseName = databaseHelper.databaseName();

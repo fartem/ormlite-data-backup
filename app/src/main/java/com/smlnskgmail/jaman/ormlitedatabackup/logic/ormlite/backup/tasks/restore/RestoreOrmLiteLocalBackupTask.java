@@ -31,13 +31,13 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
         this.backupPath = backupPath;
     }
 
+    @NonNull
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
-    protected Boolean doInBackground(Void... voids) {
+    protected Boolean doInBackground(@NonNull Void... voids) {
         OrmLiteDatabaseParameters parameters
                 = OrmLiteHelperFactory.databaseParameters();
         String tempDatabase = parameters.databaseFolder() + "/temp.db";
-
         boolean success = new FileCopy(
                 context,
                 backupPath,
@@ -67,7 +67,7 @@ public class RestoreOrmLiteLocalBackupTask extends AsyncTask<Void, Void, Boolean
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(@NonNull Boolean result) {
         backupTarget.localBackupRestored(result);
     }
 

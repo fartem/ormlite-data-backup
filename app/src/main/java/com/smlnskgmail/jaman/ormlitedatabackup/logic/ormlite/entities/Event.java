@@ -48,16 +48,14 @@ public class Event extends EntityWithId {
 
     }
 
+    @Nullable
     public String title() {
         return title;
     }
 
+    @Nullable
     public String subtitle() {
         return subtitle;
-    }
-
-    public Date date() {
-        return date;
     }
 
     @Override
